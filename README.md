@@ -1,4 +1,3 @@
 #rshell
-Samuel Hwang
 Baldo Vargas
-Pls help
+Samuel Hwang
