@@ -10,8 +10,7 @@ void command_prompt(){
 	if(name == NULL){
 		cout << "Error: Cannot retreieve login info." << endl;
 	}	
-	char hostname[256] = {"\0"};
-	hostname[255] = '\0';
+	char hostname[256]; 
 	int hostcheck =  gethostname(hostname, 255);
 	if(hostcheck == -1){
 		cout << "Error: Cannot retrieve login info." << endl;
