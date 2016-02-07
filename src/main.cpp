@@ -1,4 +1,5 @@
-//i commented out your code for testing purposes
+//need to use tockenizer to store in a char []!!!
+//just ust the tockenizer and comehow store it all in a char array 
 #include<iostream>
 #include<unistd.h>
 #include<sys/wait.h>
@@ -12,20 +13,17 @@ using namespace std;
 
 int main(int argc, char * argv[]){
 	/*currently set at 1 for 1 itteration to avoid infinite loop*/
-	bool exit_check = 0;
+	int exit_check = 0;
 
 	/*entire itteration of rshell until exit is called*/
-	/*need to make exit function*/
-	/*do{
-		//prints command prompt every itteration
+	do{
 		//use next 3 lines for parsing
 		command_prompt();
-		char cmd[128];
-		char * cmd_ptr[16];
-		getline(cin,cmd);
-		*cmd_ptr = cmd;
-		cmd_ptr[15] = '\0';
-		//testin execvp anf fork
+		char cmd[128]; 
+		char * cmd_ptr[32];
+		cin.getline(cmd,128);
+		*argv = cmd;
+		//testin execvp and fork
 		pid_t childPID = fork();
 		if(childPID <  0){
 			//forking error
@@ -37,25 +35,23 @@ int main(int argc, char * argv[]){
 			wait(NULL); //waits for child to finish
 		}
 		else{
-			cout << "In child" << endl;
 			//child process lies here
-			int run_shell = execvp(cmd_ptr[0], cmd_ptr);
-			if(run_shell < 0){
-				perror("Exec Failed");
-				exit(-1);
-			}
-
-			//sample test for exit will make funcation 
-			if(strcmp(argv[0], "exit") == 0){
+			//exit is not working still
+			if(strcmp(cmd_ptr[0], "exit") == 0){
 				exit_check = 1;
+				exit(0);
 			}
-
+			else{
+				int run_shell = execvp(*argv, argv);
+				if(run_shell < 0){
+					perror("Exec Failed");
+					exit(-1);
+				}
+			}
 		}
-	}while(!exit_check);
+	}while(exit_check == 0);
 
-	cout << "made it" << endl;*/
-
-	Tokenizer str;
+	/*Tokenizer str;
 	string token;
 	string line;
 
@@ -103,7 +99,7 @@ int main(int argc, char * argv[]){
 	//{
 	//	cout << token << endl;
 	//}
-	//cout << endl;
+	//cout << endl;*/
 
 
 	return 0;
