@@ -20,6 +20,7 @@ void command_prompt(){
 		cout << "Error: Cannot retrieve login info." << endl;
 		exit(EXIT_FAILURE);
 	}
+	/*command prompt to output everytime*/
 	cout << name << "@" << hostname << "$ ";
 
 }
