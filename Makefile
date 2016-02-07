@@ -2,7 +2,7 @@ COMP=g++
 CFLAGS=-Wall -Werror -ansi -pedantic
 
 all:
-	$(COMP) $(CFLAGS) main.cpp -o rshell
+	$(COMP) $(CFLAGS) src/main.cpp -o rshell
 	mkdir bin
 	mv rshell bin
 rshell:

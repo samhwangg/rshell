@@ -4,45 +4,58 @@
 #include<sys/wait.h>
 #include<sys/types.h>
 #include<stdio.h>
+#include<cstring>
 #include"login.h"
-//#include "Tokenizer.h"
+#include "Tokenizer.h"
 
 using namespace std;
 
 int main(int argc, char * argv[]){
 	/*currently set at 1 for 1 itteration to avoid infinite loop*/
-	bool exit_check = 1;
+	bool exit_check = 0;
 
 	/*entire itteration of rshell until exit is called*/
 	/*need to make exit function*/
-	do{
-		/*prints command prompt every itteration*/
-		command_prompt();	
-		string cmd;
+	/*do{
+		//prints command prompt every itteration
+		//use next 3 lines for parsing
+		command_prompt();
+		char cmd[128];
+		char * cmd_ptr[16];
 		getline(cin,cmd);
+		*cmd_ptr = cmd;
+		cmd_ptr[15] = '\0';
+		//testin execvp anf fork
 		pid_t childPID = fork();
 		if(childPID <  0){
-			//child executes here
-			perror("Child Procces Failed\n");
+			//forking error
+			perror("Forking Failed\n");
 			exit(-1);
 		}
-		if(childPID != 0){
-			cout << "Parent pid: " << getpid() << endl;
-			cout << "Child pid: " << childPID << endl;
+		else if(childPID != 0){
+			//parent process lies here
 			wait(NULL); //waits for child to finish
 		}
 		else{
-			cout << "Child pid: " << getpid() << endl;
-			cout << "Parent pid: " << getppid() << endl;
-			execl("/bin/mkdir","mkdir","testt", NULL);
-			execl("/bin/ls","ls", NULL);
-			execl("/bin/rm", "rm", "-rf", "testt", NULL);
+			cout << "In child" << endl;
+			//child process lies here
+			int run_shell = execvp(cmd_ptr[0], cmd_ptr);
+			if(run_shell < 0){
+				perror("Exec Failed");
+				exit(-1);
+			}
+
+			//sample test for exit will make funcation 
+			if(strcmp(argv[0], "exit") == 0){
+				exit_check = 1;
+			}
+
 		}
 	}while(!exit_check);
 
-	cout << "made it" << endl;
+	cout << "made it" << endl;*/
 
-/*	Tokenizer str;
+	Tokenizer str;
 	string token;
 	string line;
 
@@ -91,7 +104,7 @@ int main(int argc, char * argv[]){
 	//	cout << token << endl;
 	//}
 	//cout << endl;
-*/
+
 
 	return 0;
 }
