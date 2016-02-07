@@ -2,7 +2,7 @@
 #include"login.h"
 using namespace std;
 
-int main(){
+int main(int argc, char * argv[]){
 	/*currently set at 1 for 1 itteration to avoid infinite loop*/
 	bool exit_check = 1;
 
