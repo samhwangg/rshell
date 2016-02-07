@@ -1,6 +1,11 @@
+//i commented out your code for testing purposes
 #include<iostream>
+#include<unistd.h>
+#include<sys/wait.h>
+#include<sys/types.h>
+#include<stdio.h>
 #include"login.h"
-#include "Tokenizer.h"
+//#include "Tokenizer.h"
 
 using namespace std;
 
@@ -13,10 +18,31 @@ int main(int argc, char * argv[]){
 	do{
 		/*prints command prompt every itteration*/
 		command_prompt();	
-
+		string cmd;
+		getline(cin,cmd);
+		pid_t childPID = fork();
+		if(childPID <  0){
+			//child executes here
+			perror("Child Procces Failed\n");
+			exit(-1);
+		}
+		if(childPID != 0){
+			cout << "Parent pid: " << getpid() << endl;
+			cout << "Child pid: " << childPID << endl;
+			wait(NULL); //waits for child to finish
+		}
+		else{
+			cout << "Child pid: " << getpid() << endl;
+			cout << "Parent pid: " << getppid() << endl;
+			execl("/bin/mkdir","mkdir","testt", NULL);
+			execl("/bin/ls","ls", NULL);
+			execl("/bin/rm", "rm", "-rf", "testt", NULL);
+		}
 	}while(!exit_check);
 
-	Tokenizer str;
+	cout << "made it" << endl;
+
+/*	Tokenizer str;
 	string token;
 	string line;
 
@@ -65,7 +91,7 @@ int main(int argc, char * argv[]){
 	//	cout << token << endl;
 	//}
 	//cout << endl;
-
+*/
 
 	return 0;
 }
