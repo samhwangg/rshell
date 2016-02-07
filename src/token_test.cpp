@@ -1,5 +1,4 @@
 // testing Tokenizer class
-//test
 #include "Tokenizer.h"
 #include <string>
 #include <iostream>
@@ -13,9 +12,9 @@ int main(int argc, char* argv[])
     Tokenizer str;
     string token;
     int counter = 0;
-
+	string test = "This string tests parsing with variables";
     // set source string with default delimiters (space, tab, and newline char)
-    str.set("This is a testing\t string.\n\nTry to modify it \t\t yourself.");
+    str.set(test);
 
     // Tokenizer::next() returns a next available token from source string
     // If it reaches EOS, it returns zero-length string, "".
