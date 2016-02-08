@@ -38,8 +38,6 @@ int main(int argc, char* argv[])
 		cout << y << endl;
 	}
 	
-	
-
 
    /* // set a different string and delimiters(~, _)
     // Notice that space is not delimiter any more.
@@ -50,7 +48,7 @@ int main(int argc, char* argv[])
         ++counter;
         cout << counter << ": " << token << endl;
     }
-
-    return 0;*/
+*/
+    return 0;
 }
 

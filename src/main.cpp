@@ -22,10 +22,28 @@ int main(int argc, char * argv[]){
 		string token;
 		string get_prompt;
 		vector<string> holdCommands;
+		
+		char * tmp[64];
 
 		command_prompt();
 		getline(cin, get_prompt);
-		*argv = cmd;
+		str.set(get_prompt, ";");
+		
+		while((token = str.next()) != ""){
+			holdCommands.push_back(token);
+		}
+
+		//all testing purpose			
+		char * y;
+		for(unsigned  i = 0; i < holdCommands.size(); ++i){
+
+			y  = new char[holdCommands.at(i).length() + 1];
+			strcpy(y, holdCommands.at(i).c_str());
+
+			y++;
+
+		}
+
 		//testin execvp and fork
 		pid_t childPID = fork();
 		if(childPID <  0){
@@ -40,12 +58,12 @@ int main(int argc, char * argv[]){
 		else{
 			//child process lies here
 			//exit is not working still
-			if(strcmp(cmd_ptr[0], "exit") == 0){
+			if(strcmp(y , "exit") == 0){
 				exit_check = 1;
 				exit(0);
 			}
 			else{
-				int run_shell = execvp(*argv, argv);
+				int run_shell = execvp(*y, y);
 				if(run_shell < 0){
 					perror("Exec Failed");
 					exit(-1);
