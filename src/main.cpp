@@ -17,11 +17,14 @@ int main(int argc, char * argv[]){
 
 	/*entire itteration of rshell until exit is called*/
 	do{
-		//use next 3 lines for parsing
+		//initializes parsing
+		Tokenizer str;
+		string token;
+		string get_prompt;
+		vector<string> holdCommands;
+
 		command_prompt();
-		char cmd[128]; 
-		char * cmd_ptr[32];
-		cin.getline(cmd,128);
+		getline(cin, get_prompt);
 		*argv = cmd;
 		//testin execvp and fork
 		pid_t childPID = fork();
@@ -51,7 +54,7 @@ int main(int argc, char * argv[]){
 		}
 	}while(exit_check == 0);
 
-	Tokenizer str;
+	/*Tokenizer str;
 	string token;
 	string line;
 
@@ -62,7 +65,7 @@ int main(int argc, char * argv[]){
 	{
 		cout << token << endl;
 	}
-	cout << endl;
+	cout << endl;*/
 	
 	/*getline(cin, line);
 	string delimiter = "; ";
