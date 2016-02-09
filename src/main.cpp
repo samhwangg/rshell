@@ -18,7 +18,7 @@ int main(int argc, char * argv[]){
 	/*entire itteration of rshell until exit is called*/
 	do{
 		//initializes parsing
-		Tokenizer str;
+		/*Tokenizer str;
 		string token;
 		string get_prompt;
 		vector<string> holdCommands;
@@ -42,7 +42,9 @@ int main(int argc, char * argv[]){
 
 			y++;
 
-		}
+		}*/
+
+
 
 		//testin execvp and fork
 		pid_t childPID = fork();
@@ -70,7 +72,8 @@ int main(int argc, char * argv[]){
 				}
 			}
 		}
-	}while(exit_check == 0);
+	
+	while(exit_check == 0);
 
 	/*Tokenizer str;
 	string token;

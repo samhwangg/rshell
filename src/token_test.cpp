@@ -14,8 +14,8 @@ int main(int argc, char* argv[])
     // instanciate Tokenizer class
     Tokenizer str;
     string token;
-	vector<string> holdCommands;
-	string test = "ls -a; echo hello; cd ..";
+    vector<string> holdCommands;
+    string test = "ls -a; echo hello; cd ..";
     // set source string with default delimiters (space, tab, and newline char)
     str.set(test, ";");
 
@@ -25,19 +25,19 @@ int main(int argc, char* argv[])
     {
         holdCommands.push_back(token);
     }
-    for(int i = 0; i < holdCommands.size(); i++)
+    /*for(int i = 0; i < holdCommands.size(); i++)
 	{
 		cout << holdCommands.at(i) << endl;
-	}
+	}*/
 
+	char  y[1024] =  "";
 	for(int i = 0; i < holdCommands.size(); i++)
-	{
-		char *y = new char[holdCommands.at(i).length() + 1];
-		strcpy(y, holdCommands.at(i).c_str());
+	{	
+		strcat(y,"\0");
+		strcat(y,holdCommands.at(i).c_str());
 
-		cout << y << endl;
 	}
-	
+	cout << y << endl;
 
    /* // set a different string and delimiters(~, _)
     // Notice that space is not delimiter any more.
