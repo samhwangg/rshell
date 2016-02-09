@@ -46,6 +46,7 @@ do{
 	for(unsigned i = 0; i < holdCommands.size(); i++)
 	{	
 		cmd_line[i] = const_cast<char*>( holdCommands.at(i).c_str());
+		cout << cmd_line[i] << endl;
 	}
 
 		//testin execvp and fork
@@ -102,6 +103,6 @@ do{
 	}
 	cout << line << endl;*/
 
-	//}
 	return 0;
 }
+
