@@ -27,23 +27,25 @@ do{
 	command_prompt();
 	getline(cin,str);
 	typedef tokenizer<char_separator<char> > tokenizer;
-	char_separator<char> sep(";");
+	char_separator<char> sep(" ");
 	tokenizer tokens(str, sep);
 	for(tokenizer::iterator tok_iter = tokens.begin(); tok_iter != tokens.end(); tok_iter++)
 	{
 		holdCommands.push_back(*tok_iter);
 		string test;
 		test = *tok_iter;
-	}	
+	}
 
-	char *  y[1024]; //int temp;
+	//new added
+	//for(unsigned i = 1; i < holdCommands.size(); ++i){
+	//	holdCommands.at(i).erase(0,1);
+	//}
+
+	char *  y[1024];  
 	memset(y,'\0',sizeof(y));
 	for(unsigned i = 0; i < holdCommands.size(); i++)
 	{	
 		y[i] = const_cast<char*>( holdCommands.at(i).c_str());
-		//temp = i;
-		//strcat(y[i], "\0");
-		cout << y[i] << endl;
 	}
 
 		//testin execvp and fork
