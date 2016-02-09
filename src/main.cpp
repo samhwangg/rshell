@@ -5,6 +5,7 @@
 #include<sys/wait.h>
 #include<sys/types.h>
 #include<stdio.h>
+#include<vector>
 #include<cstring>
 #include"login.h"
 #include"Tokenizer.h"
@@ -16,15 +17,13 @@ int main(int argc, char * argv[]){
 	int exit_check = 0;
 
 	/*entire itteration of rshell until exit is called*/
-	do{
+//	do{
 		//initializes parsing
-		/*Tokenizer str;
+		Tokenizer str;
 		string token;
 		string get_prompt;
 		vector<string> holdCommands;
 		
-		char * tmp[64];
-
 		command_prompt();
 		getline(cin, get_prompt);
 		str.set(get_prompt, ";");
@@ -34,20 +33,16 @@ int main(int argc, char * argv[]){
 		}
 
 		//all testing purpose			
-		char * y;
-		for(unsigned  i = 0; i < holdCommands.size(); ++i){
-
-			y  = new char[holdCommands.at(i).length() + 1];
+		char y[1024] = "";
+		for(int  i = 0; i < holdCommands.size(); ++i){
+			strcat(y, "\0");
 			strcpy(y, holdCommands.at(i).c_str());
-
-			y++;
-
-		}*/
-
+		}
+		cout << y << endl;
 
 
 		//testin execvp and fork
-		pid_t childPID = fork();
+	/*	pid_t childPID = fork();
 		if(childPID <  0){
 			//forking error
 			perror("Forking Failed\n");
@@ -74,7 +69,7 @@ int main(int argc, char * argv[]){
 		}
 	
 	while(exit_check == 0);
-
+*/
 	/*Tokenizer str;
 	string token;
 	string line;
