@@ -41,11 +41,11 @@ do{
 	//	holdCommands.at(i).erase(0,1);
 	//}
 
-	char *  y[1024];  
-	memset(y,'\0',sizeof(y));
+	char *  cmd_line[2048];  
+	memset(cmd_line,'\0',sizeof(cmd_line));
 	for(unsigned i = 0; i < holdCommands.size(); i++)
 	{	
-		y[i] = const_cast<char*>( holdCommands.at(i).c_str());
+		cmd_line[i] = const_cast<char*>( holdCommands.at(i).c_str());
 	}
 
 		//testin execvp and fork
@@ -67,7 +67,7 @@ do{
 			//	exit(0);
 		//	}
 			//else{
-				int run_shell = execvp(y[0],y );
+				int run_shell = execvp(cmd_line[0],cmd_line );
 				if(run_shell < 0){
 					perror("Exec Failed");
 					exit(-1);
