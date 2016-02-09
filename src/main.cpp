@@ -14,7 +14,7 @@ using namespace std;
 
 int main(int argc, char * argv[]){
 	/*currently set at 1 for 1 itteration to avoid infinite loop*/
-	int exit_check = 0;
+//	int exit_check = 0;
 
 	/*entire itteration of rshell until exit is called*/
 //	do{
@@ -34,7 +34,7 @@ int main(int argc, char * argv[]){
 
 		//all testing purpose			
 		char y[1024] = "";
-		for(int  i = 0; i < holdCommands.size(); ++i){
+		for(unsigned  i = 0; i < holdCommands.size(); ++i){
 			strcat(y, "\0");
 			strcpy(y, holdCommands.at(i).c_str());
 		}
