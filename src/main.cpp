@@ -8,38 +8,43 @@
 #include<vector>
 #include<cstring>
 #include"login.h"
-#include"Tokenizer.h"
+#include<boost/tokenizer.hpp>
 
 using namespace std;
+using namespace boost;
 
-int main(int argc, char * argv[]){
+int main(int argc, char * argv[])
+{
 	/*currently set at 1 for 1 itteration to avoid infinite loop*/
 //	int exit_check = 0;
 
 	/*entire itteration of rshell until exit is called*/
 //	do{
 		//initializes parsing
-		Tokenizer str;
-		string token;
-		string get_prompt;
-		vector<string> holdCommands;
 		
-		command_prompt();
-		getline(cin, get_prompt);
-		str.set(get_prompt, ";");
-		
-		while((token = str.next()) != ""){
-			holdCommands.push_back(token);
-		}
+	vector<string> holdCommands;
+	string str;
+	command_prompt();
+	getline(cin,str);
+	typedef tokenizer<char_separator<char> > tokenizer;
+	char_separator<char> sep(";");
+	tokenizer tokens(str, sep);
+	for(tokenizer::iterator tok_iter = tokens.begin(); tok_iter != tokens.end(); tok_iter++)
+	{
+		holdCommands.push_back(*tok_iter);
+		string test;
+		test = *tok_iter;
+		cout << test << endl;
+	}	
 
-		//all testing purpose			
-		char y[1024] = "";
-		for(unsigned  i = 0; i < holdCommands.size(); ++i){
-			strcat(y, "\0");
-			strcpy(y, holdCommands.at(i).c_str());
-		}
-		cout << y << endl;
+	char  y[1024] =  "";
+	for(int i = 0; i < holdCommands.size(); i++)
+	{	
+		strcat(y,"\0");
+		strcat(y,holdCommands.at(i).c_str());
 
+	}
+	cout << y << endl;
 
 		//testin execvp and fork
 	/*	pid_t childPID = fork();
