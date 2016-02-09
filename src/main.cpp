@@ -16,10 +16,10 @@ using namespace boost;
 int main(int argc, char * argv[])
 {
 	/*currently set at 1 for 1 itteration to avoid infinite loop*/
-//	int exit_check = 0;
+	int exit_check = 0;
 
 	/*entire itteration of rshell until exit is called*/
-//	do{
+do{
 		//initializes parsing
 		
 	vector<string> holdCommands;
@@ -36,15 +36,15 @@ int main(int argc, char * argv[])
 		test = *tok_iter;
 	}	
 
-	char *  y[1024]; int temp;
+	char *  y[1024]; //int temp;
+	memset(y,'\0',sizeof(y));
 	for(unsigned i = 0; i < holdCommands.size(); i++)
 	{	
 		y[i] = const_cast<char*>( holdCommands.at(i).c_str());
-		temp = i;
+		//temp = i;
 		//strcat(y[i], "\0");
 		cout << y[i] << endl;
 	}
-	y[temp] = NULL;
 
 		//testin execvp and fork
 		pid_t childPID = fork();
@@ -65,7 +65,7 @@ int main(int argc, char * argv[])
 			//	exit(0);
 		//	}
 			//else{
-				int run_shell = execvp(*y,y );
+				int run_shell = execvp(y[0],y );
 				if(run_shell < 0){
 					perror("Exec Failed");
 					exit(-1);
@@ -73,7 +73,7 @@ int main(int argc, char * argv[])
 			//}
 		}
 	
-	//while(exit_check == 0);
+	}while(exit_check == 0);
 
 	/*Tokenizer str;
 	string token;
