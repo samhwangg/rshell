@@ -27,6 +27,8 @@ int main()
 		holdCommands.at(i).erase(0, 1);
 	}
 
+	//STOP HERE IF YOU WANT VECTOR OF STRINGS
+
 	char y[1024] = "";
 	for(int i = 0; i < holdCommands.size(); i++)
 	{
