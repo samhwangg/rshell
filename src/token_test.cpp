@@ -3,15 +3,15 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include<cstring>
-using std::string;
-using std::cout;
-using std::endl;
+#include <cstring>
+
 using namespace std;
+//using namespace boost;
 
 int main(int argc, char* argv[])
 {
     // instanciate Tokenizer class
+	
     Tokenizer str;
     string token;
     vector<string> holdCommands;
