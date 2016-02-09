@@ -34,20 +34,20 @@ int main(int argc, char * argv[])
 		holdCommands.push_back(*tok_iter);
 		string test;
 		test = *tok_iter;
-		cout << test << endl;
 	}	
 
-	char  y[1024] =  "";
-	for(int i = 0; i < holdCommands.size(); i++)
+	char *  y[1024]; int temp;
+	for(unsigned i = 0; i < holdCommands.size(); i++)
 	{	
-		strcat(y,"\0");
-		strcat(y,holdCommands.at(i).c_str());
-
+		y[i] = const_cast<char*>( holdCommands.at(i).c_str());
+		temp = i;
+		//strcat(y[i], "\0");
+		cout << y[i] << endl;
 	}
-	cout << y << endl;
+	y[temp] = NULL;
 
 		//testin execvp and fork
-	/*	pid_t childPID = fork();
+		pid_t childPID = fork();
 		if(childPID <  0){
 			//forking error
 			perror("Forking Failed\n");
@@ -60,21 +60,21 @@ int main(int argc, char * argv[])
 		else{
 			//child process lies here
 			//exit is not working still
-			if(strcmp(y , "exit") == 0){
-				exit_check = 1;
-				exit(0);
-			}
-			else{
-				int run_shell = execvp(*y, y);
+			//if(strcmp(y , "exit") == 0){
+			//	exit_check = 1;
+			//	exit(0);
+		//	}
+			//else{
+				int run_shell = execvp(*y,y );
 				if(run_shell < 0){
 					perror("Exec Failed");
 					exit(-1);
 				}
-			}
+			//}
 		}
 	
-	while(exit_check == 0);
-*/
+	//while(exit_check == 0);
+
 	/*Tokenizer str;
 	string token;
 	string line;
@@ -100,6 +100,6 @@ int main(int argc, char * argv[])
 	}
 	cout << line << endl;*/
 
-
+	//}
 	return 0;
 }
