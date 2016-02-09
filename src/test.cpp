@@ -10,9 +10,9 @@ using namespace boost;
 int main()
 {	
 	vector<string> holdCommands;
-	string str = "Hello|world|-foo;;bar";
+	string str = "ls -a; echo hello; mkdir test";
 	typedef tokenizer<char_separator<char> > tokenizer;
-	char_separator<char> sep("-;|");
+	char_separator<char> sep(";");
 	tokenizer tokens(str, sep);
 	for(tokenizer::iterator tok_iter = tokens.begin(); tok_iter != tokens.end(); tok_iter++)
 	{
@@ -22,15 +22,17 @@ int main()
 		cout << test << endl;
 	}	
 
-	char  y[1024] =  "";
-	for(int i = 0; i < holdCommands.size(); i++)
-	{	
-		strcat(y,"\0");
-		strcat(y,holdCommands.at(i).c_str());
+	for(int i = 1; i < holdCommands.size(); i++)
+	{
+		holdCommands.at(i).erase(0, 1);
+	}
 
+	char y[1024] = "";
+	for(int i = 0; i < holdCommands.size(); i++)
+	{
+		strcat(y, "\0");
+		strcat(y, holdCommands.at(i).c_str());
 	}
 	cout << y << endl;
 
-
-	
 }
