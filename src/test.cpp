@@ -10,18 +10,34 @@ int main()
 	char str[100];
 
 	vector<char* > commands;
+	vector<string> separators;
 
 	cin.getline(str,100);
 
 	char* point;
 
-	point = strtok(str, ";");
+	for(int i = 0; i < 100; i++)
+	{
+		if(str[i] == ';')
+			separators.push_back(";");
 
+		if(str[i] == '&') {
+			separators.push_back("&&");
+			i++;
+		}
+
+		if(str[i] == '|') {
+			separators.push_back("||");
+			i++;
+		}
+	}
+
+	point = strtok(str, ";|&");
 	while(point != NULL)
 	{
 		commands.push_back(point);
-		point = strtok(NULL, ";");
-
+		point = strtok(NULL, ";|&");
+		
 	}
 
 	for(int i = 0; i < commands.size(); i++)
@@ -49,7 +65,10 @@ int main()
 		separateCommands.clear();
 	}
 
-	//commandList.push_back(commands);	
+	for(int i = 0; i < separators.size(); i++)
+	{
+		cout << separators.at(i) << endl;
+	}
 
 	for(int i = 0; i < commandList.size(); i++)
 	{
