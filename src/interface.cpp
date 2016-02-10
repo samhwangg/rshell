@@ -28,7 +28,7 @@ int main()
 	vector<vector<string> > commands;
 	//first command
 	vector<string> test;
-	test.push_back("ecxho"); 
+	test.push_back("echo"); 
 	test.push_back("FISRT"); 
 	commands.push_back(test);
 	//second command
@@ -55,12 +55,12 @@ int main()
 		if(it != 0)
 		{
 			prev_command = connectors.at(it - 1);
-			cout << prev_command << " ";
+			//cout << prev_command << " ";
 		}
 		//for(unsigned i = 0; i < commands.size(); ++i)
 		//{
 			//check if previous call failed or not
-			cout << prev_check << endl;
+		//`cout << prev_check << endl;
 			if(prev_check)
 			{
 				if(prev_command == ";")
@@ -95,7 +95,7 @@ int main()
 						{
 							perror("Execvp failed");
 							prev_check = false;
-							cout << "made it" << endl;
+							//cout << "made it" << endl;
 						}
 
 
@@ -127,7 +127,7 @@ int main()
 						wait(NULL);	
 					}
 					else
-					{
+					{	
 						prev_check = true;
 						//in child process
 						int run_shell = execvp(buffer[0],buffer);
