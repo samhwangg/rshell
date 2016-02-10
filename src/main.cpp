@@ -93,8 +93,8 @@ int main(int argc, char * argv[])
 			cout << commandList.at(i).at(j) << endl;
 		}
 	
-
-
+		//does all the magic
+		execute(seperators, separateCommands);
 	
 	}while(exit_check == 0);
 	
