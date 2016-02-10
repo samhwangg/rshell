@@ -1,46 +1,64 @@
 #include <iostream>
-#include <boost/tokenizer.hpp>
 #include <string>
 #include <vector>
 #include <cstring>
 
 using namespace std;
-using namespace boost;
 
 int main()
 {	
-	vector<string> holdCommands;
-	string str = "ls -a&;&echo hello&mkdir test";
-	typedef tokenizer<char_separator<char> > tokenizer;
-	char_separator<char> sep("#&|");
-	tokenizer tokens(str, sep);
-	for(tokenizer::iterator iter = tokens.begin();iter != tokens.end(); ++iter)
+	char str[100];
+
+	vector<char* > commands;
+
+	cin.getline(str,100);
+
+	char* point;
+
+	point = strtok(str, ";");
+
+	while(point != NULL)
 	{
-		cout << *iter << endl;
-	}
-	/*for(tokenizer::iterator tok_iter = tokens.begin(); tok_iter != tokens.end(); tok_iter++)
-	{
-		holdCommands.push_back(*tok_iter);
-		string test;
-		test = *tok_iter;
-		cout << test << endl;
+		commands.push_back(point);
+		point = strtok(NULL, ";");
+
 	}
 
-	for(int i = 1; i < holdCommands.size(); i++)
+	for(int i = 0; i < commands.size(); i++)
 	{
-		holdCommands.at(i).erase(0, 1);
+		if(commands.at(i)[0] == ' ')
+		{
+			commands.at(i)++;
+		}
 	}
 
-	//STOP HERE IF YOU WANT VECTOR OF STRINGS
-
-	char y[1024] = "";
-	for(int i = 0; i < holdCommands.size(); i++)
+	vector<vector<char* > > commandList;
+	vector<char* >separateCommands;
+	char* sample;
+	for(int i = 0; i < commands.size(); i++)
 	{
-		strcat(y, "\0");
-		strcat(y, holdCommands.at(i).c_str());
+		sample = strtok(commands.at(i), " ");
+		while(sample != NULL)
+		{	
+			separateCommands.push_back(sample);
+			sample = strtok(NULL, " ");
+		}
+
+		commandList.push_back(separateCommands);
+
+		separateCommands.clear();
 	}
-	cout << y << endl;
-*/
+
+	//commandList.push_back(commands);	
+
+	for(int i = 0; i < commandList.size(); i++)
+	{
+		for(int j = 0; j < commandList.at(i).size(); j++)
+		cout << commandList.at(i).at(j) << endl;
+	}
+	
+
+
 
 	return 0;
 }
