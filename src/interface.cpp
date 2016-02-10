@@ -23,21 +23,42 @@ int main()
 
 	//all testing until parsing is finshied
 	vector<string> connectors;
-	connectors.push_back("&&");
+	connectors.push_back("||");
+	connectors.push_back("||");
+	connectors.push_back("||");
+	connectors.push_back("||");
+	connectors.push_back(";");
 	connectors.push_back(";");
 	vector<vector<string> > commands;
 	//first command
 	vector<string> test;
 	test.push_back("echo"); 
-	test.push_back("FISRT"); 
+	test.push_back("Baldo"); 
 	commands.push_back(test);
 	//second command
 	vector<string> test2;
 	test2.push_back("cal"); 
 	commands.push_back(test2);
+	//next command
 	vector<string> test3;
 	test3.push_back("date"); 
 	commands.push_back(test3);
+	//third command
+	vector<string> test4;
+	test4.push_back("date"); 
+	commands.push_back(test4);
+	//next command
+	vector<string> test5;
+	test5.push_back("echo yaya"); 
+	commands.push_back(test5);
+	//next command
+	vector<string> test6;
+	test6.push_back("date"); 
+	commands.push_back(test6);
+	//next command
+	vector<string> test7;
+	test7.push_back("echo last"); 
+	commands.push_back(test7);
 	
 	
 
@@ -144,7 +165,7 @@ int main()
 				else if(prev_command == "||")
 				{
 					//will not run
-
+					prev_check = false;
 
 				}
 	
@@ -195,47 +216,53 @@ int main()
 				{
 					//will not run
 
-			/*		//for loop to make command into a cstring array
-					for(int cs = 0; cs < commands.at(it).size() ; ++cs)
-					{
-						buffer[cs] = const_cast<char *>(commands.at(it).at(cs).c_str());
-					}
-
-					//run execvp
-					pid_t childPID = fork();
-					if(childPID < 0)
-					{
-						//forking error
-						perror("Forking child Failed\n");
-						exit(-1);
-					}
-					else if(childPID != 0)
-					{
-						//parent process
-						wait(NULL);	
-					}
-					else
-					{
-						//in child process
-						int run_shell = execvp(buffer[0],buffer);
-						if(run_shell < 0)
-						{
-							perror("Execvp failed");
-							prev_check = false;
-						}
-
-
-					}
-
-					*/
-
 					prev_check = false;
 
 				}
 				else if(prev_command == "||")
 				{
 					//will run
+					
 
+					//if previous was false but ||
+					if(prev_command == "||")
+					{
+						prev_check = false;
+					}
+					else
+					{
+						//for loop to make command into a cstring array
+						for(int cs = 0; cs < commands.at(it).size() ; ++cs)
+						{
+							buffer[cs] = const_cast<char *>(commands.at(it).at(cs).c_str());
+						}
+
+						//run execvp
+						pid_t childPID = fork();
+						if(childPID < 0)
+						{
+							//forking error
+							perror("Forking child Failed\n");
+							exit(-1);
+						}
+						else if(childPID != 0)
+						{
+							//parent process
+							wait(NULL);	
+						}
+						else
+						{
+							prev_check = true;
+							//in child process
+							int run_shell = execvp(buffer[0],buffer);
+							if(run_shell < 0)
+							{
+								perror("Execvp failed");
+								prev_check = false;
+								//cout << "made it" << endl;
+							}
+						}
+					}
 
 				}
 
