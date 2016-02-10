@@ -11,16 +11,16 @@
 
 using namespace std;
 
+//vector<string> connectors, vector<vector<char *>> commands
 //use as parameters for execute
-void execute(vector<string> connectors, vector<vector<char *>> commands)
-{
-//int main()
-//{	
+//void execute(){
+int main()
+{	
 	//used to see if previod command was ran properly
 	//both values are default
 	bool prev_check = 1;
 	string prev_command = ";";
-/*
+
 	//all testing until parsing is finshied
 	vector<string> connectors;
 	connectors.push_back("&&");
@@ -39,12 +39,12 @@ void execute(vector<string> connectors, vector<vector<char *>> commands)
 	test3.push_back("date"); 
 	commands.push_back(test3);
 	
-*/	
+	
 
 	//testing
 	
-	//make hard case for no connectors to just run one command
-	////just like main
+//make hard case for no connectors to just run one command
+////just like main
 
 	for(int it = 0; it < connectors.size() + 1; ++it)
 	{
@@ -55,12 +55,11 @@ void execute(vector<string> connectors, vector<vector<char *>> commands)
 		if(it != 0)
 		{
 			prev_command = connectors.at(it - 1);
-			//cout << prev_command << " ";
+			cout << prev_command << " ";
 		}
 		//for(unsigned i = 0; i < commands.size(); ++i)
 		//{
 			//check if previous call failed or not
-			//cout << prev_check << endl;
 			cout << prev_check << endl;
 			if(prev_check)
 			{
@@ -86,7 +85,6 @@ void execute(vector<string> connectors, vector<vector<char *>> commands)
 					{
 						//parent process
 						wait(NULL);	
-						cout << "am i here" << endl;
 					}
 					else
 					{
@@ -97,6 +95,7 @@ void execute(vector<string> connectors, vector<vector<char *>> commands)
 						{
 							perror("Execvp failed");
 							prev_check = false;
+							cout << "made it" << endl;
 						}
 
 
@@ -248,9 +247,9 @@ void execute(vector<string> connectors, vector<vector<char *>> commands)
 
 	}
 
-	//return 0;
-//}
-
-
+	return 0;
 }
+
+
+//}
 
