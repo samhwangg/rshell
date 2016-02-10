@@ -24,8 +24,8 @@ int main()
 	//all testing until parsing is finshied
 	vector<string> connectors;
 	connectors.push_back("||");
-	connectors.push_back("||");
-	connectors.push_back("||");
+	connectors.push_back(";");
+	connectors.push_back(";");
 	connectors.push_back("||");
 	connectors.push_back(";");
 	connectors.push_back(";");
@@ -49,7 +49,8 @@ int main()
 	commands.push_back(test4);
 	//next command
 	vector<string> test5;
-	test5.push_back("echo yaya"); 
+	test5.push_back("echo");
+	test5.push_back("yaya"); 
 	commands.push_back(test5);
 	//next command
 	vector<string> test6;
@@ -57,7 +58,8 @@ int main()
 	commands.push_back(test6);
 	//next command
 	vector<string> test7;
-	test7.push_back("echo last"); 
+	test7.push_back("echo");
+	test7.push_back("last"); 
 	commands.push_back(test7);
 	
 	
