@@ -19,7 +19,8 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 	//both values are default
 	bool prev_check = 1;
 	string prev_command = ";";
-	
+
+	cout << commands.size() << endl;
 	//make hard case for no connectors to just run one command
 	////just like main
 
@@ -46,6 +47,8 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 				for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
 				{
 					buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
+
+					cout << "line 50" << endl;
 				}
 
 				//run execvp

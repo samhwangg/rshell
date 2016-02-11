@@ -107,6 +107,7 @@ int main(int argc, char * argv[])
 		}*/
 	
 		//does all the magic
+		//
 		execute(separators, commandList);
 	
 	}while(exit_check == 0);
