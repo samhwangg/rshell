@@ -1,5 +1,3 @@
-//need to use tockenizer to store in a char []!!!
-//just ust the tockenizer and comehow store it all in a char array 
 #include<iostream>
 #include<unistd.h>
 #include<sys/wait.h>
@@ -34,7 +32,7 @@ int main(int argc, char * argv[])
 
 		cin.getline(str2,100);
 
-		for(int i = 0; str2[i] != '\0'; i++)
+		for(unsigned i = 0; str2[i] != '\0'; i++)
 		{
 			if(str2[i] == '#')
 			{
@@ -101,10 +99,10 @@ int main(int argc, char * argv[])
 			separateCommands.clear();
 		}
 
-		/*for(unsigned i = 0; i < separators.size(); i++)
+		for(unsigned i = 0; i < separators.size(); i++)
 		{
 			cout << separators.at(i) << endl;
-		}*/
+		}
 
 		for(unsigned i = 0; i < commandList.size(); i++)
 		{

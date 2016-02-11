@@ -20,7 +20,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 	bool prev_check = 1;
 	string prev_command = ";";
 
-	cout << commands.size() << endl;
 	//make hard case for no connectors to just run one command
 	////just like main
 
@@ -48,7 +47,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 				{
 					buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
 
-					cout << "line 50" << endl;
 				}
 
 				//run execvp
@@ -74,7 +72,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 						perror("Execvp failed");
 						prev_check = false;
 					}
-
 
 				}
 
@@ -113,7 +110,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 						perror("Execvp failed");
 						prev_check = false;
 					}
-
 
 				}
 
@@ -204,10 +200,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 						perror("Execvp failed");
 						prev_check = false;
 					}
-
 				}
-
-
 
 			}
 
