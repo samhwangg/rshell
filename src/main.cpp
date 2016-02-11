@@ -100,11 +100,11 @@ int main(int argc, char * argv[])
 			cout << separators.at(i) << endl;
 		}*/
 
-		/*for(unsigned i = 0; i < commandList.size(); i++)
+		for(unsigned i = 0; i < commandList.size(); i++)
 		{
 			for(unsigned j = 0; j < commandList.at(i).size(); j++)
 			cout << commandList.at(i).at(j) << endl;
-		}*/
+		}
 	
 		//does all the magic
 		//
