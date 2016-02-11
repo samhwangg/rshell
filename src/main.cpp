@@ -25,12 +25,24 @@ int main(int argc, char * argv[])
 		//getline(cin,cmd_line);
 
 		//INSERT PARSING HERE	
+
 		char str[100];
+		char str2[100];
 
 		vector<char* > commands;
 		vector<string> separators;
 
-		cin.getline(str,100);
+		cin.getline(str2,100);
+
+		for(int i = 0; str2[i] != '\0'; i++)
+		{
+			if(str2[i] == '#')
+			{
+				strncpy(str, str2, i);
+				str[i] = '\0';
+				break;
+			}
+		}
 
 		char* point;
 
