@@ -24,13 +24,13 @@ int main(int argc, char * argv[])
 
 		//INSERT PARSING HERE	
 
-		char str[100];
-		char str2[100];
+		char str[1024];
+		char str2[1024];
 
 		vector<char* > commands;
 		vector<string> separators;
 
-		cin.getline(str2,100);
+		cin.getline(str2,1024);
 
 		for(unsigned i = 0; str2[i] != '\0'; i++)
 		{
@@ -50,7 +50,7 @@ int main(int argc, char * argv[])
 
 		char* point;
 
-		for(unsigned i = 0; i < 100; i++)
+		for(unsigned i = 0; i < 1024; i++)
 		{
 			if(str[i] == ';')
 				separators.push_back(";");
@@ -111,9 +111,21 @@ int main(int argc, char * argv[])
 		}
 	
 		//does all the magic
-		//
+		
 		execute(separators, commandList);
-	
+
+		//insert destructor here
+		for(int i = 0; i < 1024; i++)
+		{
+			str[i] = '\0';
+			str2[i] = '\0';
+		}
+		point = '\0';
+		commands.clear();
+		separators.clear();
+		commandList.clear();
+		separateCommands.clear();
+		
 	}while(exit_check == 0);
 	
 	
