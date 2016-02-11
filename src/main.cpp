@@ -99,7 +99,7 @@ int main(int argc, char * argv[])
 			separateCommands.clear();
 		}
 
-		for(unsigned i = 0; i < separators.size(); i++)
+	/*	for(unsigned i = 0; i < separators.size(); i++)
 		{
 			cout << separators.at(i) << endl;
 		}
@@ -109,7 +109,7 @@ int main(int argc, char * argv[])
 			for(unsigned j = 0; j < commandList.at(i).size(); j++)
 			cout << commandList.at(i).at(j) << endl;
 		}
-	
+	*/
 		//does all the magic
 		
 		execute(separators, commandList);
