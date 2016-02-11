@@ -22,24 +22,30 @@ int main(int argc, char * argv[])
 		command_prompt();
 		//getline(cin,cmd_line);
 
-		//INSERT PARSING HERE	
-
+		
+		//create strings to store user input in cstring format
 		char str[1024];
 		char str2[1024];
 
+		//vector of cstrings to store commands
 		vector<char* > commands;
+		//vector of strings to store separators
 		vector<string> separators;
 
+		//user input up to a max of 1024 characters
 		cin.getline(str2,1024);
-
+		
+		//searches for '#' and moves all non-comments from str2 to str 
 		for(unsigned i = 0; str2[i] != '\0'; i++)
 		{
+			//if comments, search for '#' position and move from 0 to '#' position
 			if(str2[i] == '#')
 			{
 				strncpy(str, str2, i);
 				str[i] = '\0';
 				break;
 			}
+			//if no comments, move all of str2 to str
 			if(i == (strlen(str2) - 1));
 			{
 				strncpy(str, str2, (i + 1));
@@ -48,8 +54,7 @@ int main(int argc, char * argv[])
 
 		}
 
-		char* point;
-
+		//search for separators and stores it into string vector
 		for(unsigned i = 0; i < 1024; i++)
 		{
 			if(str[i] == ';')
@@ -65,7 +70,9 @@ int main(int argc, char * argv[])
 				i++;
 			}
 		}
-	
+
+		//splits user input into tokens and stores it in the commands vector
+		char* point;
 		point = strtok(str, ";|&");
 		while(point != NULL)
 		{
@@ -73,7 +80,7 @@ int main(int argc, char * argv[])
 			point = strtok(NULL, ";|&");
 			
 		}
-	
+		//if there is a whitespace at the beginning of the command, remove it
 		for(unsigned i = 0; i < commands.size(); i++)
 		{
 			if(commands.at(i)[0] == ' ')
@@ -81,7 +88,7 @@ int main(int argc, char * argv[])
 				commands.at(i)++;
 			}
 		}
-
+		//creates a 2D vector to store the commands and the flag in a vector of cstrings
 		vector<vector<char* > > commandList;
 		vector<char* >separateCommands;
 		char* sample;
@@ -93,28 +100,17 @@ int main(int argc, char * argv[])
 				separateCommands.push_back(sample);
 				sample = strtok(NULL, " ");
 			}
-	
+			//pushes back vector of cstrings into vector, making a 2D vector
 			commandList.push_back(separateCommands);
-	
+			
 			separateCommands.clear();
 		}
-
-	/*	for(unsigned i = 0; i < separators.size(); i++)
-		{
-			cout << separators.at(i) << endl;
-		}
-
-		for(unsigned i = 0; i < commandList.size(); i++)
-		{
-			for(unsigned j = 0; j < commandList.at(i).size(); j++)
-			cout << commandList.at(i).at(j) << endl;
-		}
-	*/
 		//does all the magic
 		
 		execute(separators, commandList, exit_check);
 
-		//insert destructor here
+		//destroy the memory locations created by cstrings
+		//clears all vectors
 		for(int i = 0; i < 1024; i++)
 		{
 			str[i] = '\0';
