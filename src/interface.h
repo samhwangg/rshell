@@ -15,13 +15,14 @@ using namespace std;
 
 void execute(vector<string> connectors, vector<vector<char *> > commands, bool & e_check)
 {	
-	//used to see if previod command was ran properly
+	//used to see if previous command was ran properly
 	//both values are default
 	bool prev_check = 1;
 	string prev_command = ";";
 	string e_cmp = "exit";
 	
 	//case when only connectors are passed
+	//and when connector end line
 	int temp1 = commands.size();
 	int temp2 = connectors.size();
 	bool valid_case1 = true;
@@ -38,15 +39,19 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 		cout << "Error: Syntax" << endl;
 		return;
 	}
-
+	//runs normaly if no syntax error detected
 	if(valid_case1)
-	{
+	{	
+		//loop that runs all the commands passed in the command prompt
+		//and accounts for the connectors
 		for(unsigned it  = 0; it < connectors.size() + 1; ++it)
 		{
 			//makes char ** that is used in execvp and 
-			//fills with NULL
+			//fills with NULL loads one command at a time
 			char * buffer[1024];
 			memset(buffer, '\0', sizeof(buffer));
+			//gets previous connector to check 
+			//if the next command will run or not
 			if(connectors.size() != 0)
 			{
 				if(it != 0)
@@ -55,13 +60,11 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				}
 			}
 			//check if previous call failed or not
-			//cout << prev_check << endl;
 			if(prev_check)
 			{
 				if(prev_command == ";")
 				{
-					//will always run
-
+					//will always run in the case of a true before ; 
 					//for loop to make command into a cstring array
 					for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
 					{
@@ -106,8 +109,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				}
 				else if(prev_command == "&&")
 				{
-					//will run
-
+					//will run if the previoud command returned true
 					//for loop to make command into a cstring array
 					for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
 					{
@@ -151,7 +153,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				}
 				else if(prev_command == "||")
 				{
-					//will not run
+					//will not run in any case if previoud command was true
 					prev_check = false;	
 				}
 
@@ -161,8 +163,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 
 				if(prev_command == ";")
 				{
-					//will always run
-
+					//will always run in the case that previoud command was true
 					//for loop to make command into a cstring array
 					for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
 					{
@@ -208,13 +209,13 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				}
 				else if(prev_command == "&&")
 				{
+					//will not run if previoud command was false
 					prev_check = false;
 
 				}
 				else if(prev_command == "||")
 				{
-					//will run
-					
+					//will run if previos command was false	
 					//for loop to make command into a cstring array
 					for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
 					{
