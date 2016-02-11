@@ -19,25 +19,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 	//both values are default
 	bool prev_check = 1;
 	string prev_command = ";";
-/*
-	//all testing until parsing is finshied
-	vector<string> connectors;
-	connectors.push_back("&&");
-	connectors.push_back(";");
-	vector<vector<string> > commands;
-	//first command
-	vector<string> test;
-	test.push_back("ecxho"); 
-	test.push_back("FISRT"); 
-	commands.push_back(test);
-	//second command
-	vector<string> test2;
-	test2.push_back("cal"); 
-	commands.push_back(test2);
-	vector<string> test3;
-	test3.push_back("date"); 
-	commands.push_back(test3);
-*/	
 	
 	//make hard case for no connectors to just run one command
 	////just like main
@@ -89,7 +70,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 					{
 						perror("Execvp failed");
 						prev_check = false;
-						cout << "made it" << endl;
 					}
 
 
@@ -138,8 +118,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 			else if(prev_command == "||")
 			{
 				//will not run
-
-
+				prev_check = false;	
 			}
 
 		}
@@ -193,6 +172,38 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 			else if(prev_command == "||")
 			{
 				//will run
+				
+				//for loop to make command into a cstring array
+				for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
+				{
+					buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
+				}
+
+				//run execvp
+				pid_t childPID = fork();
+				if(childPID < 0)
+				{
+					//forking error
+					perror("Forking child Failed\n");
+					exit(-1);
+				}
+				else if(childPID != 0)
+				{
+					//parent process
+					wait(NULL);	
+				}
+				else
+				{
+					prev_check = true;
+					int run_shell = execvp(buffer[0],buffer);
+					if(run_shell < 0)
+					{
+						perror("Execvp failed");
+						prev_check = false;
+					}
+
+				}
+
 
 
 			}
