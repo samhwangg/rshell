@@ -1,3 +1,5 @@
+#ifndef __interface_h__
+#define __interface_h__
 #include <cstdlib>
 #include <cstring>
 #include <unistd.h>
@@ -11,16 +13,13 @@
 
 using namespace std;
 
-//vector<string> connectors, vector<vector<char *>> commands
-//use as parameters for execute
-//void execute(){
-int main()
+void execute(vector<string> connectors, vector<vector<char *> > commands)
 {	
 	//used to see if previod command was ran properly
 	//both values are default
 	bool prev_check = 1;
 	string prev_command = ";";
-
+/*
 	//all testing until parsing is finshied
 	vector<string> connectors;
 	connectors.push_back("&&");
@@ -38,15 +37,12 @@ int main()
 	vector<string> test3;
 	test3.push_back("date"); 
 	commands.push_back(test3);
+*/	
 	
-	
+	//make hard case for no connectors to just run one command
+	////just like main
 
-	//testing
-	
-//make hard case for no connectors to just run one command
-////just like main
-
-	for(int it = 0; it < connectors.size() + 1; ++it)
+	for(unsigned it  = 0; it < connectors.size() + 1; ++it)
 	{
 		//makes char ** that is used in execvp and 
 		//fills with NULL
@@ -55,200 +51,154 @@ int main()
 		if(it != 0)
 		{
 			prev_command = connectors.at(it - 1);
-			cout << prev_command << " ";
+		//	cout << prev_command << " ";
 		}
-		//for(unsigned i = 0; i < commands.size(); ++i)
-		//{
-			//check if previous call failed or not
-			cout << prev_check << endl;
-			if(prev_check)
+		//check if previous call failed or not
+		//cout << prev_check << endl;
+		if(prev_check)
+		{
+			if(prev_command == ";")
 			{
-				if(prev_command == ";")
+				//will always run
+
+				//for loop to make command into a cstring array
+				for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
 				{
-					//will always run
+					buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
+				}
 
-					//for loop to make command into a cstring array
-					for(int cs = 0; cs < commands.at(it).size() ; ++cs)
+				//run execvp
+				pid_t childPID = fork();
+				if(childPID < 0)
+				{
+					//forking error
+					perror("Forking child Failed\n");
+					exit(-1);
+				}
+				else if(childPID != 0)
+				{
+					//parent process
+					wait(NULL);	
+				}
+				else
+				{
+					prev_check = true;
+					//in child process
+					int run_shell = execvp(buffer[0],buffer);
+					if(run_shell < 0)
 					{
-						buffer[cs] = const_cast<char *>(commands.at(it).at(cs).c_str());
-					}
-
-					//run execvp
-					pid_t childPID = fork();
-					if(childPID < 0)
-					{
-						//forking error
-						perror("Forking child Failed\n");
-						exit(-1);
-					}
-					else if(childPID != 0)
-					{
-						//parent process
-						wait(NULL);	
-					}
-					else
-					{
-						prev_check = true;
-						//in child process
-						int run_shell = execvp(buffer[0],buffer);
-						if(run_shell < 0)
-						{
-							perror("Execvp failed");
-							prev_check = false;
-							cout << "made it" << endl;
-						}
-
-
+						perror("Execvp failed");
+						prev_check = false;
+						cout << "made it" << endl;
 					}
 
 
 				}
-				else if(prev_command == "&&")
-				{
-					//will run
-
-					//for loop to make command into a cstring array
-					for(int cs = 0; cs < commands.at(it).size() ; ++cs)
-					{
-						buffer[cs] = const_cast<char *>(commands.at(it).at(cs).c_str());
-					}
-
-					//run execvp
-					pid_t childPID = fork();
-					if(childPID < 0)
-					{
-						//forking error
-						perror("Forking child Failed\n");
-						exit(-1);
-					}
-					else if(childPID != 0)
-					{
-						//parent process
-						wait(NULL);	
-					}
-					else
-					{
-						prev_check = true;
-						//in child process
-						int run_shell = execvp(buffer[0],buffer);
-						if(run_shell < 0)
-						{
-							perror("Execvp failed");
-							prev_check = false;
-						}
 
 
-					}
-
-				}
-				else if(prev_command == "||")
-				{
-					//will not run
-
-
-				}
-	
 			}
-			else
+			else if(prev_command == "&&")
 			{
+				//will run
 
-				if(prev_command == ";")
+				//for loop to make command into a cstring array
+				for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
 				{
-					//will always run
-
-					//for loop to make command into a cstring array
-					for(int cs = 0; cs < commands.at(it).size() ; ++cs)
-					{
-						buffer[cs] = const_cast<char *>(commands.at(it).at(cs).c_str());
-					}
-
-					//run execvp
-					pid_t childPID = fork();
-					if(childPID < 0)
-					{
-						//forking error
-						perror("Forking child Failed\n");
-						exit(-1);
-					}
-					else if(childPID != 0)
-					{
-						//parent process
-						wait(NULL);	
-					}
-					else
-					{
-						prev_check = true;
-						int run_shell = execvp(buffer[0],buffer);
-						if(run_shell < 0)
-						{
-							perror("Execvp failed");
-							prev_check = false;
-						}
-
-					}
-
-
-
-
+					buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
 				}
-				else if(prev_command == "&&")
+
+				//run execvp
+				pid_t childPID = fork();
+				if(childPID < 0)
 				{
-					//will not run
-
-			/*		//for loop to make command into a cstring array
-					for(int cs = 0; cs < commands.at(it).size() ; ++cs)
-					{
-						buffer[cs] = const_cast<char *>(commands.at(it).at(cs).c_str());
-					}
-
-					//run execvp
-					pid_t childPID = fork();
-					if(childPID < 0)
-					{
-						//forking error
-						perror("Forking child Failed\n");
-						exit(-1);
-					}
-					else if(childPID != 0)
-					{
-						//parent process
-						wait(NULL);	
-					}
-					else
-					{
-						//in child process
-						int run_shell = execvp(buffer[0],buffer);
-						if(run_shell < 0)
-						{
-							perror("Execvp failed");
-							prev_check = false;
-						}
-
-
-					}
-
-					*/
-
-					prev_check = false;
-
+					//forking error
+					perror("Forking child Failed\n");
+					exit(-1);
 				}
-				else if(prev_command == "||")
+				else if(childPID != 0)
 				{
-					//will run
+					//parent process
+					wait(NULL);	
+				}
+				else
+				{
+					prev_check = true;
+					//in child process
+					int run_shell = execvp(buffer[0],buffer);
+					if(run_shell < 0)
+					{
+						perror("Execvp failed");
+						prev_check = false;
+					}
 
 
 				}
 
 			}
+			else if(prev_command == "||")
+			{
+				//will not run
+
+
+			}
+
+		}
+		else
+		{
+
+			if(prev_command == ";")
+			{
+				//will always run
+
+				//for loop to make command into a cstring array
+				for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
+				{
+					buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
+				}
+
+				//run execvp
+				pid_t childPID = fork();
+				if(childPID < 0)
+				{
+					//forking error
+					perror("Forking child Failed\n");
+					exit(-1);
+				}
+				else if(childPID != 0)
+				{
+					//parent process
+					wait(NULL);	
+				}
+				else
+				{
+					prev_check = true;
+					int run_shell = execvp(buffer[0],buffer);
+					if(run_shell < 0)
+					{
+						perror("Execvp failed");
+						prev_check = false;
+					}
+
+				}
+
+
+
+
+			}
+			else if(prev_command == "&&")
+			{
+				prev_check = false;
+
+			}
+			else if(prev_command == "||")
+			{
+				//will run
+
+
+			}
+
+		}
 			
-
-		//}
-
-
 	}
-
-	return 0;
 }
-
-
-//}
+#endif

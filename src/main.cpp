@@ -9,12 +9,13 @@
 #include<vector>
 #include<cstring>
 #include"login.h"
+#include"interface.h"
 
 using namespace std;
 
 int main(int argc, char * argv[])
 {
-	int exit_check = 1;
+	int exit_check = 0 ;
 
 	/*entire itteration of rshell until exit is called*/
 	do{
@@ -33,7 +34,7 @@ int main(int argc, char * argv[])
 
 		char* point;
 
-		for(int i = 0; i < 100; i++)
+		for(unsigned i = 0; i < 100; i++)
 		{
 			if(str[i] == ';')
 				separators.push_back(";");
@@ -57,7 +58,7 @@ int main(int argc, char * argv[])
 			
 		}
 	
-		for(int i = 0; i < commands.size(); i++)
+		for(unsigned i = 0; i < commands.size(); i++)
 		{
 			if(commands.at(i)[0] == ' ')
 			{
@@ -68,7 +69,7 @@ int main(int argc, char * argv[])
 		vector<vector<char* > > commandList;
 		vector<char* >separateCommands;
 		char* sample;
-		for(int i = 0; i < commands.size(); i++)
+		for(unsigned i = 0; i < commands.size(); i++)
 		{
 			sample = strtok(commands.at(i), " ");
 			while(sample != NULL)
@@ -82,19 +83,19 @@ int main(int argc, char * argv[])
 			separateCommands.clear();
 		}
 
-		for(int i = 0; i < separators.size(); i++)
+		/*for(unsigned i = 0; i < separators.size(); i++)
 		{
 			cout << separators.at(i) << endl;
-		}
+		}*/
 
-		for(int i = 0; i < commandList.size(); i++)
+		/*for(unsigned i = 0; i < commandList.size(); i++)
 		{
-			for(int j = 0; j < commandList.at(i).size(); j++)
+			for(unsigned j = 0; j < commandList.at(i).size(); j++)
 			cout << commandList.at(i).at(j) << endl;
-		}
+		}*/
 	
 		//does all the magic
-		execute(seperators, separateCommands);
+		execute(separators, commandList);
 	
 	}while(exit_check == 0);
 	
