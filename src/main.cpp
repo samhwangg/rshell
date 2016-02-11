@@ -5,7 +5,7 @@
 #include<sys/wait.h>
 #include<sys/types.h>
 #include<stdio.h>
-#include <string>
+#include<string>
 #include<vector>
 #include<cstring>
 #include"login.h"
@@ -42,6 +42,12 @@ int main(int argc, char * argv[])
 				str[i] = '\0';
 				break;
 			}
+			if(i == (strlen(str2) - 1));
+			{
+				strncpy(str, str2, (i + 1));
+				str[i + 1] = '\0';
+			}
+
 		}
 
 		char* point;

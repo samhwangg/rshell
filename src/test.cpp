@@ -14,7 +14,7 @@ int main()
 	vector<string> separators;
 
 	cin.getline(str2,100);
-
+	cout << strlen(str2) << endl;
 	for(int i = 0; str2[i] != '\0'; i++)
 	{
 		if(str2[i] == '#')
@@ -22,6 +22,11 @@ int main()
 			strncpy(str, str2, i);
 			str[i] = '\0';
 			break;
+		}
+		if(i == (strlen(str2) - 1))
+		{
+			strncpy(str, str2, (i + 1));
+			str[i + 1] = '\0';
 		}
 	}
 
