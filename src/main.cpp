@@ -13,7 +13,7 @@ using namespace std;
 
 int main(int argc, char * argv[])
 {
-	int exit_check = 0 ;
+	bool exit_check = false;
 
 	/*entire itteration of rshell until exit is called*/
 	do{
@@ -112,7 +112,7 @@ int main(int argc, char * argv[])
 	*/
 		//does all the magic
 		
-		execute(separators, commandList);
+		execute(separators, commandList, exit_check);
 
 		//insert destructor here
 		for(int i = 0; i < 1024; i++)
@@ -126,7 +126,7 @@ int main(int argc, char * argv[])
 		commandList.clear();
 		separateCommands.clear();
 		
-	}while(exit_check == 0);
+	}while(!exit_check);
 	
 	
 	return 0;

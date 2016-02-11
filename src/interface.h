@@ -13,12 +13,13 @@
 
 using namespace std;
 
-void execute(vector<string> connectors, vector<vector<char *> > commands)
+void execute(vector<string> connectors, vector<vector<char *> > commands, bool & e_check)
 {	
 	//used to see if previod command was ran properly
 	//both values are default
 	bool prev_check = 1;
 	string prev_command = ";";
+	string e_cmp = "exit";
 	
 	//case when only connectors are passed
 	int temp1 = commands.size();
@@ -32,10 +33,14 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 			valid_case1 = false;	
 		}
 	}
+	if(temp2 >= temp1)
+	{
+		cout << "Error: Syntax" << endl;
+		return;
+	}
 
 	if(valid_case1)
 	{
-		cout << connectors.size() << endl;
 		for(unsigned it  = 0; it < connectors.size() + 1; ++it)
 		{
 			//makes char ** that is used in execvp and 
@@ -64,6 +69,13 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 
 					}
 
+					//exit check
+					if(strcmp(buffer[0], e_cmp.c_str()) == 0)
+					{
+						e_check = true;
+						return;
+
+					}
 					//run execvp
 					pid_t childPID = fork();
 					if(childPID < 0)
@@ -100,6 +112,14 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 					for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
 					{
 						buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
+					}
+
+					//exit check
+					if(strcmp(buffer[0], e_cmp.c_str()) == 0)
+					{
+						e_check = true;
+						return;
+
 					}
 
 					//run execvp
@@ -149,6 +169,13 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 						buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
 					}
 
+					//exit check
+					if(strcmp(buffer[0], e_cmp.c_str()) == 0)
+					{
+						e_check = true;
+						return;
+
+					}
 					//run execvp
 					pid_t childPID = fork();
 					if(childPID < 0)
@@ -164,6 +191,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 					}
 					else
 					{
+					
 						prev_check = true;
 						int run_shell = execvp(buffer[0],buffer);
 						if(run_shell < 0)
@@ -192,7 +220,12 @@ void execute(vector<string> connectors, vector<vector<char *> > commands)
 					{
 						buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
 					}
-
+					//exit check
+					if(strcmp(buffer[0], e_cmp.c_str()) == 0)
+					{
+						e_check = true;
+						return;
+					}
 					//run execvp
 					pid_t childPID = fork();
 					if(childPID < 0)
