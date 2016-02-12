@@ -33,6 +33,11 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 			cout << "Error: connector passed with no commands preceeding" << endl;
 			valid_case1 = false;	
 		}
+		else
+		{
+			//empty input return nothing
+			return;
+		}
 	}
 	if(temp2 >= temp1)
 	{
