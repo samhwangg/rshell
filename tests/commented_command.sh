@@ -1,32 +1,19 @@
-Script started on Thu 11 Feb 2016 11:45:01 PM PST
-]0;bvarg006@hammer:~/CS100/rshell[?1034h[bvarg006@hammer rshell]$ bin/rshell
+Script started on Fri 12 Feb 2016 02:08:52 AM PST
+]0;bvarg006@hammer:~/CS100/rshell/tests[?1034h[bvarg006@hammer tests]$ bin/rshell
+bash: bin/rshell: No such file or directory
+]0;bvarg006@hammer:~/CS100/rshell/tests[bvarg006@hammer tests]$ ls[K[Kcd ..
+]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ ls
+[0m[01;34mbin[0m  LICENSE  Makefile  README.md  [01;34msrc[0m  [01;34mtests[0m
+[m]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ bin/rshell
+bvarg006@hammer.cs.ucr.edu$ echo commanted tests
+commanted tests
 bvarg006@hammer.cs.ucr.edu$ clear
-[H[2Jbvarg006@hammer.cs.ucr.edu$ ls && ca; l # date && dat  e && date && date
-apple.txt  bin	LICENSE  Makefile  README.md  src  tests
-    February 2016   
-Su Mo Tu We Th Fr Sa
-    1  2  3  4  5  6
- 7  8  9 10 [7m11[27m 12 13
-14 15 16 17 18 19 20
-21 22 23 24 25 26 27
-28 29
-
-bvarg006@hammer.cs.ucr.edu$ clear
-[H[2Jbvarg006@hammer.cs.ucr.edu$ # ls
-bvarg006@hammer.cs.ucr.edu$ clear
-[H[2Jbvarg006@hammer.cs.ucr.edu$ ls    mkdir apple # exit
-bvarg006@hammer.cs.ucr.edu$ ls
-apple  apple.txt  bin  LICENSE	Makefile  README.md  src  tests
-bvarg006@hammer.cs.ucr.edu$ rm app   -rf apple
-bvarg006@hammer.cs.ucr.edu$ rm apple.txt
-bvarg006@hammer.cs.ucr.edu$ ls
+[H[2Jbvarg006@hammer.cs.ucr.edu$ # ls && echo hi
+bvarg006@hammer.cs.ucr.edu$ ls # ls  date
 bin  LICENSE  Makefile	README.md  src	tests
-bvarg006@hammer.cs.ucr.edu$ clear
-[H[2Jbvarg006@hammer.cs.ucr.edu$ cd
-Execvp failed: No such file or directory
-bvarg006@hammer.cs.ucr.edu$ clear
-[H[2Jbvarg006@hammer.cs.ucr.edu$ cal 234234       || echo || sdgfdgdfh && dgsfgdf ; FDSFDFg^[[B^[[D^[[D                                                    # fhkgsdfkghsdfkghlkdfg
-                                23                                
+bvarg006@hammer.cs.ucr.edu$ date && cal 34 || date # echo hi ; ls
+Fri Feb 12 02:09:40 PST 2016
+                                34                                
 
        January               February                 March       
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
@@ -62,13 +49,21 @@ Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 31
 
 bvarg006@hammer.cs.ucr.edu$ clear
-[H[2Jbvarg006@hammer.cs.ucr.edu$ #sdjfhsdkfsdf ; echo no out
+[H[2Jbvarg006@hammer.cs.ucr.edu$ echo hi ; ls # ls && echo hi
+hi
+bin  LICENSE  Makefile	README.md  src	tests
 bvarg006@hammer.cs.ucr.edu$ clear
-[H[2Jbvarg006@hammer.cs.ucr.edu$ exit
+[H[2Jbvarg006@hammer.cs.ucr.edu$ #
+bvarg006@hammer.cs.ucr.edu$ clear
+[H[2Jbvarg006@hammer.cs.ucr.edu$ ls # echo hi
+bin  LICENSE  Makefile	README.md  src	tests
+bvarg006@hammer.cs.ucr.edu$ #whoami
+bvarg006@hammer.cs.ucr.edu$ eho   whoami # ls
+bvarg006
+bvarg006@hammer.cs.ucr.edu$ clear
+[H[2Jbvarg006@hammer.cs.ucr.edu$ echo bye! # echo no
+bye!
 bvarg006@hammer.cs.ucr.edu$ exit
-]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ e[Kclear
-[H[2J]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ ls
-[0m[01;34mbin[0m  LICENSE  Makefile  README.md  [01;34msrc[0m  [01;34mtests[0m
-[m]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ exit
+]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ exit
 
-Script done on Thu 11 Feb 2016 11:46:45 PM PST
+Script done on Fri 12 Feb 2016 02:10:40 AM PST

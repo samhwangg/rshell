@@ -20,6 +20,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	bool prev_check = true;
 	string prev_command = ";";
 	string e_cmp = "exit";
+	string c_cmp = "clear";
 	
 	//case for just exit being passed
 	if(connectors.size() == 0)
@@ -29,6 +30,11 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 			if(strcmp(commands.at(0).at(0), e_cmp.c_str()) == 0)
 			{
 				e_check = true;
+				return;
+			}
+			else if(strcmp(commands.at(0).at(0), c_cmp.c_str()) == 0)
+			{	
+				//avoid random clear error
 				return;
 			}
 		}
