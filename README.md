@@ -21,6 +21,7 @@
 3. &&: Sometimes when and || is based in the sequence false || true && , and && after this do not get run.
 4. echo: when doing echo "[connectot]" nothing is output, echo " [anything else]" works as expected
 5. Massive sequences of || (5>) with all except last returning false will return the last || as false in cases
+6. Error comes up on first input in the command line. Works fine after that
 
 ##### How To Run rshell
 ```
