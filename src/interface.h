@@ -17,7 +17,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 {	
 	//used to see if previous command was ran properly
 	//both values are default
-	bool prev_check = 1;
+	bool prev_check = true;
 	string prev_command = ";";
 	string e_cmp = "exit";
 	
@@ -41,6 +41,8 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	}
 	if(temp2 >= temp1)
 	{
+		//remove
+		cout << temp1 << " " << temp2 << endl;
 		cout << "Error: Syntax" << endl;
 		return;
 	}
@@ -74,7 +76,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
 					{
 						buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
-
 					}
 
 					//exit check
@@ -86,6 +87,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					}
 					//run execvp
 					pid_t childPID = fork();
+					pid_t PAR;
 					if(childPID < 0)
 					{
 						//forking error
@@ -95,7 +97,12 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					else if(childPID != 0)
 					{
 						//parent process
-						wait(NULL);	
+						PAR = waitpid(childPID, NULL, 0);
+						if(PAR < 0)
+						{
+
+							perror("Waiting Error");
+						}
 					}
 					else
 					{
@@ -131,6 +138,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 
 					//run execvp
 					pid_t childPID = fork();
+					pid_t PAR;
 					if(childPID < 0)
 					{
 						//forking error
@@ -140,7 +148,14 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					else if(childPID != 0)
 					{
 						//parent process
-						wait(NULL);	
+
+						PAR = waitpid(childPID, NULL, 0);
+						if(PAR < 0)
+						{
+
+							perror("Waiting Error");
+						}
+	
 					}
 					else
 					{
@@ -184,6 +199,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					}
 					//run execvp
 					pid_t childPID = fork();
+					pid_t PAR;
 					if(childPID < 0)
 					{
 						//forking error
@@ -193,7 +209,12 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					else if(childPID != 0)
 					{
 						//parent process
-						wait(NULL);	
+						PAR = waitpid(childPID, NULL, 0);
+						if(PAR < 0)
+						{
+
+							perror("Waiting Error");
+						}
 					}
 					else
 					{
@@ -220,41 +241,67 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				}
 				else if(prev_command == "||")
 				{
-					//will run if previos command was false	
-					//for loop to make command into a cstring array
-					for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
+					int o_check = 0;
+					//fixes multiple || error
+					if(it != 0)
 					{
-						buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
-					}
-					//exit check
-					if(strcmp(buffer[0], e_cmp.c_str()) == 0)
-					{
-						e_check = true;
-						return;
-					}
-					//run execvp
-					pid_t childPID = fork();
-					if(childPID < 0)
-					{
-						//forking error
-						perror("Forking child Failed\n");
-						exit(-1);
-					}
-					else if(childPID != 0)
-					{
-						//parent process
-						wait(NULL);	
-					}
-					else
-					{
-						prev_check = true;
-						int run_shell = execvp(buffer[0],buffer);
-						if(run_shell < 0)
+						if(connectors.at(it - 1) == "||")
 						{
-							perror("Execvp failed");
+							o_check = 1;
 							prev_check = false;
 						}
+
 					}
+					//runs command normally
+					if(o_check == 0)
+					{
+
+						//will run if previos command was false	
+						//for loop to make command into a cstring array
+						for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
+						{
+							buffer[cs] = const_cast<char *>(commands.at(it).at(cs));
+						}
+						//exit check
+						if(strcmp(buffer[0], e_cmp.c_str()) == 0)
+						{
+							e_check = true;
+							return;
+						}
+						//run execvp
+						pid_t childPID = fork();
+						pid_t PAR;
+						if(childPID < 0)
+						{
+							//forking error
+							perror("Forking child Failed\n");
+							exit(-1);
+						}
+						else if(childPID != 0)
+						{
+							//parent process
+							PAR = waitpid(childPID, NULL, 0);
+							if(PAR < 0)
+							{
+
+								perror("Waiting Error");
+							}
+
+						}
+						else
+						{
+							prev_check = true;
+							prev_check = true;
+							int run_shell = execvp(buffer[0],buffer);
+							if(run_shell < 0)
+							{
+								perror("Execvp failed");
+								prev_check = false;
+							}
+						}
+
+					}
+
 
 				}
 
