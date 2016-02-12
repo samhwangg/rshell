@@ -19,6 +19,8 @@
 1. cd: This alone other built-in bash commands will not work due to the fact that they have no executable file in the bin
 2. exit: Sometimes requires to be input 2-4 times. Functionality works, just this bug was observed enough times 
 3. &&: Sometimes when and || is based in the sequence false || true && , and && after this do not get run.
+4. echo: when doing echo "[connectot]" nothing is output, echo " [anything else]" works as expected
+5. Massive sequences of || (5>) with all except last returning false will return the last || as false in cases
 
 ##### How To Run rshell
 ```

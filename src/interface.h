@@ -21,6 +21,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	string prev_command = ";";
 	string e_cmp = "exit";
 	string c_cmp = "clear";
+	int c_pass = 0;
 	
 	//case for just exit being passed
 	if(connectors.size() == 0)
@@ -35,7 +36,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 			else if(strcmp(commands.at(0).at(0), c_cmp.c_str()) == 0)
 			{	
 				//avoid random clear error
-				return;
+				c_pass = 1;
 			}
 		}
 	}
@@ -61,8 +62,11 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	if(temp2 >= temp1)
 	{
 		//remove
-		cout << "Error: Syntax" << endl;
-		return;
+		if(c_pass != 1)
+		{
+			cout << "Error: Syntax" << endl;
+			return;
+		}
 	}
 	//runs normaly if no syntax error detected
 	if(valid_case1)
@@ -184,6 +188,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						{
 							perror("Execvp failed");
 							prev_check = false;
+							prev_check = false;
 						}
 
 					}
@@ -261,9 +266,9 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				{
 					int o_check = 0;
 					//fixes multiple || error
-					if(it != 0)
+					if(it > 1)
 					{
-						if(connectors.at(it - 1) == "||")
+						if(connectors.at(it - 2) == "||")
 						{
 							o_check = 1;
 							prev_check = false;
@@ -273,7 +278,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					//runs command normally
 					if(o_check == 0)
 					{
-
 						//will run if previos command was false	
 						//for loop to make command into a cstring array
 						for(unsigned cs = 0; cs < commands.at(it).size() ; ++cs)
