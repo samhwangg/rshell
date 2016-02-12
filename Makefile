@@ -12,6 +12,3 @@ rshell:
 
 clean:
 	rm -rf bin
-
-#need to add dependancies still!!
-# DO NOT USE MAKEFILE YET
