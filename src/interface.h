@@ -119,11 +119,11 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					else if(childPID != 0)
 					{
 						//parent process
-						PAR = waitpid(childPID, NULL, 0);
-						if(PAR < 0)
-						{
 
+						if((PAR = wait(NULL)) < 0)
+						{
 							perror("Waiting Error");
+							exit(-1);
 						}
 					}
 					else
@@ -170,14 +170,12 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					else if(childPID != 0)
 					{
 						//parent process
-
-						PAR = waitpid(childPID, NULL, 0);
-						if(PAR < 0)
+						if((PAR = wait(NULL)) < 0)
 						{
-
 							perror("Waiting Error");
+							exit(-1);
 						}
-	
+
 					}
 					else
 					{
@@ -232,11 +230,10 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					else if(childPID != 0)
 					{
 						//parent process
-						PAR = waitpid(childPID, NULL, 0);
-						if(PAR < 0)
+						if((PAR = wait(NULL)) < 0)
 						{
-
 							perror("Waiting Error");
+							exit(-1);
 						}
 					}
 					else
@@ -301,12 +298,11 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						}
 						else if(childPID != 0)
 						{
-							//parent process
-							PAR = waitpid(childPID, NULL, 0);
-							if(PAR < 0)
+						//parent process
+							if((PAR = wait(NULL)) < 0)
 							{
-
 								perror("Waiting Error");
+								exit(-1);
 							}
 
 						}
