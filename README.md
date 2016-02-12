@@ -1,5 +1,5 @@
 ### rshell
-`rshell` imitates the functionality of a terminal. `rshell` performs the following steps:
+`rshell` imitates the functionality of a bash terminal. `rshell` performs the following steps:
 
 ##### Assignment 1
 
@@ -16,9 +16,9 @@
 
 ##### Bugs(Assignment 1)
 
--
-- 
-- Add actual bugs here
+1. cd: This alone other built-in bash commands will not work due to the fact that they have no executable file in the bin
+2. exit: Sometimes requires to be input 2-4 times. Functionality works, just this bug was observed enough times 
+3. &&: Sometimes when and || is based in the sequence false || true && , and && after this do not get run.
 
 ##### How To Run rshell
 ```

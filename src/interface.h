@@ -21,6 +21,20 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	string prev_command = ";";
 	string e_cmp = "exit";
 	
+	//case for just exit being passed
+	if(connectors.size() == 0)
+	{
+		if(commands.size() == 1)
+		{
+			if(strcmp(commands.at(0).at(0), e_cmp.c_str()) == 0)
+			{
+				e_check = true;
+				return;
+			}
+
+		}
+	}
+
 	//case when only connectors are passed
 	//and when connector end line
 	int temp1 = commands.size();
@@ -42,7 +56,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	if(temp2 >= temp1)
 	{
 		//remove
-		cout << temp1 << " " << temp2 << endl;
 		cout << "Error: Syntax" << endl;
 		return;
 	}
