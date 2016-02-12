@@ -31,7 +31,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				e_check = true;
 				return;
 			}
-
 		}
 	}
 

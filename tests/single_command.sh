@@ -445,4 +445,203 @@ LICENSE  Makefile  README.md  [0m[01;34msrc[0m  [01;34mtests[0m
 #
 #	[31mmodified:   README.md[m
 #	[31mmodified:   src/interface.h[m
-#	[31mmodified:   te
+#	[31mmodified:   tests/single_command.sh[m
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ git add README.md src/interface.h tests/single_command.sh
+]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ clear
+[H[2J]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ git commit -m"Sig[Kngle command scrit[Kpt done"
+[exec 645ce21] Single command script done
+ Committer: Baldomero Vargas <bvarg006@hammer.cs.ucr.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 427 insertions(+), 104 deletions(-)
+]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+
+(gnome-ssh-askpass:9891): Gtk-WARNING **: cannot open display: 
+error: unable to read askpass response from '/usr/libexec/openssh/gnome-ssh-askpass'
+Username for 'https://github.com': BaldomeroVargas
+
+(gnome-ssh-askpass:9895): Gtk-WARNING **: cannot open display: 
+error: unable to read askpass response from '/usr/libexec/openssh/gnome-ssh-askpass'
+Password for 'https://BaldomeroVargas@github.com': 
+To https://github.com/samhwangg/rshell.git
+ ! [rejected]        exec -> exec (fetch first)
+error: failed to push some refs to 'https://github.com/samhwangg/rshell.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ git pull
+remote: Counting objects: 4, done.[K
+remote: Compressing objects:  25% (1/4)   [Kremote: Compressing objects:  50% (2/4)   [Kremote: Compressing objects:  75% (3/4)   [Kremote: Compressing objects: 100% (4/4)   [Kremote: Compressing objects: 100% (4/4), done.[K
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0[K
+Unpacking objects:  25% (1/4)   Unpacking objects:  50% (2/4)   Unpacking objects:  75% (3/4)   Unpacking objects: 100% (4/4)   Unpacking objects: 100% (4/4), done.
+From https://github.com/samhwangg/rshell
+   ae949f1..54235c0  exec       -> origin/exec
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;50r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[50;1H".git/MERGE_MSG" 7L, 296C[>c[1;1H[33m  1 Merge branch 'exec' of https://github.com/samhwang[mg/rshell into exec
+[33m  2 
+  3 [m[34m# Please enter a commit message to explain why this merge is necessary,[m
+[33m  4 [m[34m# especially if it merges an updated upstream into a topic branch.[m
+[33m  5 [m[34m#[m
+[33m  6 [m[34m# Lines starting with '#' will be ignored, and an empty message aborts[m
+[33m  7 [m[34m# the commit.[m
+[1m[34m~                                                                                                                                                                                            [9;1H~                                                                                                                                                                                            [10;1H~                                                                                                                                                                                            [11;1H~                                                                                                                                                                                            [12;1H~                                                                                                                                                                                            [13;1H~                                                                                                                                                                                            [14;1H~                                                                                                                                                                                            [15;1H~                                                                                                                                                                                            [16;1H~                                                                                                                                                                                            [17;1H~                                                                                                                                                                                            [18;1H~                                                                                                                                                                                            [19;1H~                                                                                                                                                                                            [20;1H~                                                                                                                                                                                            [21;1H~                                                                                                                                                                                            [22;1H~                                                                                                                                                                                            [23;1H~                                                                                                                                                                                            [24;1H~                                                                                                                                                                                            [25;1H~                                                                                                                                                                                            [26;1H~                                                                                                                                                                                            [27;1H~                                                                                                                                                                                            [28;1H~                                                                                                                                                                                            [29;1H~                                                                                                                                                                                            [30;1H~                                                                                                                                                                                            [31;1H~                                                                                                                                                                                            [32;1H~                                                                                                                                                                                            [33;1H~                                                                                                                                                                                            [34;1H~                                                                                                                                                                                            [35;1H~                                                                                                                                                                                            [36;1H~                                                                                                                                                                                            [37;1H~                                                                                                                                                                                            [38;1H~                                                                                                                                                                                            [39;1H~                                                                                                                                                                                            [40;1H~                                                                                                                                                                                            [41;1H~                                                                                                                                                                                            [42;1H~                                                                                                                                                                                            [43;1H~                                                                                                                                                                                            [44;1H~                                                                                                                                                                                            [45;1H~                                                                                                                                                                                            [46;1H~                                                                                                                                                                                            [47;1H~                                                                                                                                                                                            [48;1H~                                                                                                                                                                                            [49;1H~                                                                                                                                                                                            [m[50;172H1,1[11CAll[1;5H[?12l[?25h[?25l[50;162H^[[1;5H[?12l[?25h[?25l[50;162H  [1;5H[?12l[?25h[?25l[50;162H:[1;5H[50;1H[K[50;1H:[?12l[?25hw[?25l[?12l[?25hq[?25l[?12l[?25h[?25l".git/MERGE_MSG" 7L, 296C written
+[?1l>[?12l[?25h[?1049lMerge made by the 'recursive' strategy.
+ src/main.cpp | 16 [32m++++++++++++++++[m
+ 1 file changed, 16 insertions(+)
+]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ git pull
+Already up-to-date.
+]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ clear
+[H[2J]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ git status
+# On branch exec
+# Your branch is ahead of 'origin/exec' by 2 commits.
+#   (use "git push" to publish your local commits)
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	[31mmodified:   tests/single_command.sh[m
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ ls
+LICENSE  Makefile  README.md  [0m[01;34msrc[0m  [01;34mtests[0m
+[m]0;bvarg006@hammer:~/CS100/rshell[bvarg006@hammer rshell]$ cd src
+]0;bvarg006@hammer:~/CS100/rshell/src[bvarg006@hammer src]$ ls
+interface.h  login.h  main.cpp
+]0;bvarg006@hammer:~/CS100/rshell/src[bvarg006@hammer src]$ clear
+[H[2J]0;bvarg006@hammer:~/CS100/rshell/src[bvarg006@hammer src]$ viminterface.h
+bash: viminterface.h: command not found
+]0;bvarg006@hammer:~/CS100/rshell/src[bvarg006@hammer src]$ viminterface.h interface.h
+[?1049h[?1h=[2;1H▽[6n[2;1H  [1;1H[1;50r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[50;1H"interface.h" 328L, 6322C[>c[1;1H[33m 73 [m[24C[34m//gets previous connector to check [m
+[33m 74 [m[24C[34m//if the next command will run or not[m
+[33m 75 [24Cif[m(connectors.size() != [31m0[m)
+[33m 76 [m[24C{
+[33m 77 [32Cif[m(it != [31m0[m)
+[33m 78 [m[32C{
+[33m 79 [m[40Cprev_command = connectors.at(it - [31m1[m);
+[33m 80 [m[32C}
+[33m 81 [m[24C}
+[33m 82 [m[24C[34m//check if previous call failed or not[m
+[33m 83 [24Cif[m(prev_check)
+[33m 84 [m[24C{
+[33m 85 [32Cif[m(prev_command == [31m";"[m)
+[33m 86 [m[32C{
+[33m 87 [m[40C[34m//will always run in the case of a true before ; [m
+[33m 88 [m[40C[34m//for loop to make command into a cstring array[m
+[33m 89 [40Cfor[m([32munsigned[m cs = [31m0[m; cs < commands.at(it).size() ; ++cs)
+[33m 90 [m[40C{
+[33m 91 [m[48Cbuffer[cs] = [33mconst_cast[m<[32mchar[m *>(commands.at(it).at(cs));
+[33m 92 [m[40C}
+[33m 93 
+ 94 [m[40C[34m//exit check[m
+[33m 95 [40Cif[m(strcmp(buffer[[31m0[m], e_cmp.c_str()) == [31m0[m)
+[33m 96 [m[40C{
+[33m 97 [m[48Ce_check = [31mtrue[m;
+[33m 98 [48Creturn[m;
+[33m 99 
+100 [m[40C}
+[33m101 [m[40C[34m//run execvp[m
+[33m102 [m[40Cpid_t childPID = fork();
+[33m103 [m[40Cpid_t PAR;
+[33m104 [40Cif[m(childPID < [31m0[m)
+[33m105 [m[40C{
+[33m106 [m[48C[34m//forking error[m
+[33m107 [m[48Cperror([31m"Forking child Failed[m[35m\n[m[31m"[m);
+[33m108 [m[48Cexit(-[31m1[m);
+[33m109 [m[40C}
+[33m110 [40Celse[m [33mif[m(childPID != [31m0[m)
+[33m111 [m[40C{
+[33m112 [m[48C[34m//parent process[m
+[33m113 [m[48CPAR = waitpid(childPID, [31mNULL[m, [31m0[m);
+[33m114 [48Cif[m(PAR < [31m0[m)
+[33m115 [m[48C{
+[33m116 
+117 [m[56Cperror([31m"Waiting Error"[m);
+[33m118 [m[48C}
+[33m119 [m[40C}
+[33m120 [40Celse
+121 [m[40C{[50;172H97,7-49[7C25%[25;53H[?12l[?25h[?25l[50;162Hg[25;53H[?12l[?25h[?25l[50;162H [25;53H[50;162Hgg[25;53H[50;162H  [1;5H[27m[m[H[2J[1;1H[33m  1 [m[35m#ifndef __interface_h__[m
+[33m  2 [m[35m#define __interface_h__[m
+[33m  3 [m[35m#include [m[31m<cstdlib>[m
+[33m  4 [m[35m#include [m[31m<cstring>[m
+[33m  5 [m[35m#include [m[31m<unistd.h>[m
+[33m  6 [m[35m#include [m[31m<sys/wait.h>[m
+[33m  7 [m[35m#include [m[31m<sys/types.h>[m
+[33m  8 [m[35m#include [m[31m<stdio.h>[m
+[33m  9 [m[35m#include [m[31m<vector>[m
+[33m 10 [m[35m#include [m[31m<cstring>[m
+[33m 11 [m[35m#include [m[31m<string>[m
+[33m 12 [m[35m#include [m[31m<iostream>[m
+[33m 13 
+ 14 using[m [32mnamespace[m std;
+[33m 15 
+ 16 [m[32mvoid[m execute(vector<string> connectors, vector<vector<[32mchar[m *> > commands, [32mbool[m & e_check)
+[33m 17 [m{
+[33m 18 [m[8C[34m//used to see if previous command was ran properly[m
+[33m 19 [m[8C[34m//both values are default[m
+[33m 20 [m[8C[32mbool[m prev_check = [31mtrue[m;
+[33m 21 [m[8Cstring prev_command = [31m";"[m;
+[33m 22 [m[8Cstring e_cmp = [31m"exit"[m;
+[33m 23 
+ 24 [m[8C[34m//case for just exit being passed[m
+[33m 25 [8Cif[m(connectors.size() == [31m0[m)
+[33m 26 [m[8C{
+[33m 27 [16Cif[m(commands.size() == [31m1[m)
+[33m 28 [m[16C{
+[33m 29 [24Cif[m(strcmp(commands.at([31m0[m).at([31m0[m), e_cmp.c_str()) == [31m0[m)
+[33m 30 [m[24C{
+[33m 31 [m[32Ce_check = [31mtrue[m;
+[33m 32 [32Creturn[m;
+[33m 33 [m[24C}
+[33m 34 
+ 35 [m[16C}
+[33m 36 [m[8C}
+[33m 37 
+ 38 [m[8C[34m//case when only connectors are passed[m
+[33m 39 [m[8C[34m//and when connector end line[m
+[33m 40 [m[8C[32mint[m temp1 = commands.size();
+[33m 41 [m[8C[32mint[m temp2 = connectors.size();
+[33m 42 [m[8C[32mbool[m valid_case1 = [31mtrue[m;
+[33m 43 [8Cif[m(temp1 == [31m0[m)
+[33m 44 [m[8C{
+[33m 45 [16Cif[m(temp2 != [31m0[m)
+[33m 46 [m[16C{
+[33m 47 [m[24Ccout << [31m"Error: connector passed with no commands preceeding"[m << endl;
+[33m 48 [m[24Cvalid_case1 = [31mfalse[m;
+[33m 49 [m[16C}[50;172H1,1[11CTop[1;5H[?12l[?25h[?25l[50;162H~@k[1;5H[50;162H   [2;5H[50;172H2[2;5H[?12l[?25h[?25l[50;162H~@k[2;5H[50;162H   [3;5H[50;172H3[3;5H[?12l[?25h[?25l[50;162H~@k[3;5H[50;162H   [4;5H[50;172H4[4;5H[?12l[?25h[?25l[50;162H~@k[4;5H[50;162H   [5;5H[50;172H5[5;5H[?12l[?25h[?25l[50;162H~@k[5;5H[50;162H   [6;5H[50;172H6[6;5H[?12l[?25h[?25l[50;162H~@k[6;5H[50;162H   [7;5H[50;172H7[7;5H[?12l[?25h[?25l[50;162H~@k[7;5H[50;162H   [8;5H[50;172H8[8;5H[?12l[?25h[?25l[50;162H~@k[8;5H[50;162H   [9;5H[50;172H9[9;5H[?12l[?25h[?25l[50;162H~@k[9;5H[50;162H   [10;5H[50;172H10,1[10;5H[?12l[?25h[?25l[50;162H~@k[10;5H[50;162H   [11;5H[50;173H1[11;5H[?12l[?25h[?25l[50;162H~@k[11;5H[50;162H   [12;5H[50;173H2[12;5H[?12l[?25h[?25l[50;162H~@k[12;5H[50;162H   [13;5H[50;173H3,0-1[13;5H[?12l[?25h[?25l[50;162H~@k[13;5H[50;162H   [14;5H[50;173H4,1  [14;5H[?12l[?25h[?25l[50;162H~@k[14;5H[50;162H   [15;5H[50;173H5,0-1[15;5H[?12l[?25h[?25l[50;162H~@k[15;5H[50;162H   [16;5H[50;173H6,1  [16;5H[?12l[?25h[?25l[50;162H~@k[16;5H[50;162H   [17;5H[50;173H7[17;5H[?12l[?25h[?25l[50;162H~@k[17;5H[50;162H   [18;12H[50;173H8,1-8[18;12H[?12l[?25h[?25l[50;162H~@k[18;12H[50;162H   [19;12H[50;173H9[19;12H[?12l[?25h[?25l[50;162H~@k[19;12H[50;162H   [20;12H[50;172H20[20;12H[?12l[?25h[?25l[50;162H~@k[20;12H[50;162H   [21;12H[50;173H1[21;12H[?12l[?25h[?25l[50;162H~@k[21;12H[50;162H   [22;12H[50;173H2[22;12H[?12l[?25h[?25l[50;162H~@k[22;12H[50;162H   [23;12H[50;173H3[23;12H[?12l[?25h[?25l[50;162H~@k[23;12H[50;162H   [24;12H[50;173H4[24;12H[?12l[?25h[?25l[50;162H~@k[24;12H[50;162H   [25;12H[50;173H5[25;12H[?12l[?25h[?25l[50;162H~@k[25;12H[50;162H   [26;12H[50;173H6[26;12H[?12l[?25h[?25l[50;162H~@k[26;12H[50;162H   [27;12H[50;173H7[27;12H[?12l[?25h[?25l[50;162H~@k[27;12H[50;162H   [28;12H[50;173H8[28;12H[?12l[?25h[?25l[50;162H~@k[28;12H[50;162H   [29;12H[50;173H9[29;12H[?12l[?25h[?25l[50;162H~@k[29;12H[50;162H   [30;12H[50;172H30[30;12H[?12l[?25h[?25l[50;162H~@k[30;12H[50;162H   [31;12H[50;173H1[31;12H[?12l[?25h[?25l[50;162H~@k[31;12H[50;162H   [32;12H[50;173H2[32;12H[?12l[?25h[?25l[50;162H~@k[32;12H[50;162H   [33;12H[50;173H3[33;12H[?12l[?25h[?25l[50;162H~@k[33;12H[50;162H   [34;5H[50;173H4,0-1[34;5H[?12l[?25h[?25l[50;162H~@k[34;5H[50;162H   [35;12H[50;173H5,1-8[35;12H[?12l[?25h[?25l[50;162H~@k[35;12H[50;162H   [36;12H[50;173H6[36;12H[?12l[?25h[?25l[50;162H~@k[36;12H[50;162H   [37;5H[50;173H7,0-1[37;5H[?12l[?25h[?25l[50;162H~@k[37;5H[50;162H   [38;12H[50;173H8,1-8[38;12H[?12l[?25h[?25l[50;162H~@k[38;12H[50;162H   [39;12H[50;173H9[39;12H[?12l[?25h[?25l[50;162H~@k[39;12H[50;162H   [40;12H[50;172H40[40;12H[?12l[?25h[?25l[50;162H~@k[40;12H[50;162H   [41;12H[50;173H1[41;12H[?12l[?25h[?25l[50;162H~@k[41;12H[50;162H   [42;12H[50;173H2[42;12H[?12l[?25h[?25l[50;162H~@k[42;12H[50;162H   [43;12H[50;173H3[43;12H[?12l[?25h[?25l[50;162H~@k[43;12H[50;162H   [44;12H[50;173H4[44;12H[?12l[?25h[?25l[50;162H~@k[44;12H[50;162H   [45;12H[50;173H5[45;12H[?12l[?25h[?25l[50;162H~@k[45;12H[50;162H   [46;12H[50;173H6[46;12H[?12l[?25h[?25l[50;162H~@k[46;12H[50;162H   [47;12H[50;173H7[47;12H[?12l[?25h[?25l[50;162H~@k[47;12H[50;162H   [48;12H[50;173H8[48;12H[?12l[?25h[?25l[50;162H~@k[48;12H[50;162H   [49;12H[50;173H9[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 50 [16Celse[m[50;172H[K[50;172H50,1-8[9C0%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 51 [m[16C{[50;172H[K[50;172H51,1-8[9C0%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 52 [m[24C[34m//empty input return nothing[m[50;172H[K[50;172H52,1-8[9C1%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 53 [24Creturn[m;[50;172H[K[50;172H53,1-8[9C1%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 54 [m[16C}[50;172H[K[50;172H54,1-8[9C1%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 55 [m[8C}[50;172H[K[50;172H55,1-8[9C2%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 56 [8Cif[m(temp2 >= temp1)[50;172H[K[50;172H56,1-8[9C2%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 57 [m[8C{[50;172H[K[50;172H57,1-8[9C2%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 58 [m[16C[34m//remove[m[50;172H[K[50;172H58,1-8[9C3%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [49;12H[1;49r[49;1H
+[1;50r[49;1H[33m 59 [m[16Ccout << [31m"Error: Syntax"[m << endl;[50;172H[K[50;172H59,1-8[9C3%[49;12H[?12l[?25h[?25l[50;162H~@k[49;12H[50;162H   [48;12H[50;173H8[48;12H[?12l[?25h[?25l[50;162H~@k[48;12H[50;162H   [47;12H[50;173H7[47;12H[?12l[?25h[?25l[50;162H~@k[47;12H[50;162H   [46;12H[50;173H6[46;12H[?12l[?25h[?25l[50;162H~@k[46;12H[50;162H   [45;12H[50;173H5[45;12H[?12l[?25h[?25l[50;162H~@k[45;12H[50;162H   [44;12H[50;173H4[44;12H[?12l[?25h[?25l[50;162H~@k[44;12H[50;162H   [43;12H[50;173H3[43;12H[?12l[?25h[?25l[50;162H~@k[43;12H[50;162H   [42;12H[50;173H2[42;12H[?12l[?25h[?25l[50;162H~@k[42;12H[50;162H   [41;12H[50;173H1[41;12H[?12l[?25h[?25l[50;162H~@k[41;12H[50;162H   [40;12H[50;173H0[40;12H[?12l[?25h[?25l[50;162H~@k[40;12H[50;162H   [39;12H[50;172H49[39;12H[?12l[?25h[?25l[50;162H~@k[39;12H[50;162H   [38;12H[50;173H8[38;12H[?12l[?25h[?25l[50;162H~@k[38;12H[50;162H   [37;12H[50;173H7[37;12H[?12l[?25h[?25l[50;162H~@k[37;12H[50;162H   [36;12H[50;173H6[36;12H[?12l[?25h[?25l[50;162H~@k[36;12H[50;162H   [35;12H[50;173H5[35;12H[?12l[?25h[?25l[50;162H~@k[35;12H[50;162H   [34;12H[50;173H4[34;12H[?12l[?25h[?25l[50;162H~@k[34;12H[50;162H   [33;12H[50;173H3[33;12H[?12l[?25h[?25l[50;162H~@k[33;12H[50;162H   [32;12H[50;173H2[32;12H[?12l[?25h[?25l[50;162H~@k[32;12H[50;162H   [31;12H[50;173H1[31;12H[?12l[?25h[?25l[50;162H~@k[31;12H[50;
