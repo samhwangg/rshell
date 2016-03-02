@@ -9,12 +9,24 @@
 void test_execution(char * command[1024], bool & e_check)
 {
 	struct stat buf;
+	string flag;
 	//test to see if 2nd parameter is a correct flag
 	//test to see if no flag is passed
 	if(command[1] != "-e" || command[1] != "-d" ||command[1] != "-f" ||)
 	{
-
+		if(command[2] == NULL)
+		{
+			flag = "-e";				
+		}
+		else
+		{
+			cout << "Error invalid flag: Use \"-e\", \"-d\", \"-f\" or no flag to use test.\n";
+			e_check = false;
+			return;
+		}
 	}
+
+	//implementation of test command
 
 }
 #endif
