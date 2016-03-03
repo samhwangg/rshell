@@ -18,7 +18,6 @@ void test_execution(char *command[1024], bool & e_check)
 	string f_alse = "(False)\n";
 	flag = command[1];
 
-	cout << flag << endl;
 	//test to see if 2nd parameter is a correct flag
 	//test to see if no flag is passed
 	if(flag != "-e" && flag != "-d" && flag != "-f" )
@@ -48,8 +47,8 @@ void test_execution(char *command[1024], bool & e_check)
 		}
 		switch (buf.st_mode & S_IFMT)
 		{
-			case S_IFREG: cout << t_rue;
-			default: cout << f_alse;
+			case S_IFREG: cout << t_rue; break;
+			default: cout << f_alse; break;
 		}
 		
 	}
@@ -64,8 +63,8 @@ void test_execution(char *command[1024], bool & e_check)
 		}
 		switch (buf.st_mode & S_IFMT)
 		{
-			case S_IFDIR: cout << t_rue;
-			default: cout << f_alse;
+			case S_IFDIR: cout << t_rue; break;
+			default: cout << f_alse; break;
 		}
 		
 	}
@@ -83,9 +82,9 @@ void test_execution(char *command[1024], bool & e_check)
 			}
 			switch (buf.st_mode & S_IFMT)
 			{
-				case S_IFDIR: cout << t_rue;
-				case S_IFREG: cout << t_rue;
-				default: cout << f_alse;
+				case S_IFDIR: cout << t_rue; break;
+				case S_IFREG: cout << t_rue; break;
+				default: cout << f_alse; break;
 			}
 			e_check = true;
 			return;
@@ -98,9 +97,9 @@ void test_execution(char *command[1024], bool & e_check)
 		}
 		switch (buf.st_mode & S_IFMT)
 		{
-			case S_IFDIR: cout << t_rue;
-			case S_IFREG: cout << t_rue;
-			default: cout << f_alse;
+			case S_IFDIR: cout << t_rue; break;
+			case S_IFREG: cout << t_rue; break;
+			default: cout << f_alse; break;
 		}
 	}
 	e_check = true;
