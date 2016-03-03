@@ -88,6 +88,46 @@ int main(int argc, char * argv[])
 				commands.at(i)++;
 			}
 		}
+
+		//finds brackets [ ] and changes it so test precedes the command
+		int cmdsize = 0;
+		for(unsigned i = 0; i < commands.size(); i++)
+		{
+			for(unsigned j = 0; commands.at(i)[j] != '\0'; j++)
+			{
+				if(commands.at(i)[j] == '[')
+				{
+					for(unsigned k = j; commands.at(i)[k] != '\0'; k++)
+					{
+						commands.at(i)[k] = commands.at(i)[k + 1];
+					}
+				}
+				if(commands.at(i)[j] == ']')
+				{
+					for(unsigned k = j; commands.at(i)[k] != '\0'; k++)
+					{
+						commands.at(i)[k] = commands.at(i)[k + 1];
+					}
+					for(unsigned x = 0; commands.at(i)[x] != '\0'; x++)
+					{
+						cmdsize++;
+					}
+					for(unsigned y = 0; y < 4; y++)
+					{
+						for(unsigned z = cmdsize + 1; z > 0 ; z--)
+						{	
+							commands.at(i)[z] = commands.at(i)[z - 1];
+						}
+					}
+					commands.at(i)[0] = 't';
+					commands.at(i)[1] = 'e';
+					commands.at(i)[2] = 's';
+					commands.at(i)[3] = 't';
+				}
+			}
+		}
+
+
 		//removes quotation marks from echo commands
 		for(unsigned i = 0; i < commands.size(); i++)
 		{
@@ -121,8 +161,18 @@ int main(int argc, char * argv[])
 			
 			separateCommands.clear();
 		}
-		//does all the magic
-		
+
+		//c string output test
+		//for(unsigned i = 0; i < commandList.size(); i++)
+		//{
+		//	for(unsigned j = 0; j < commandList.at(i).size(); j++)
+		//	{
+		//		cout << commandList.at(i).at(j) << " ";
+		//	}
+		//	cout << endl;
+		//}
+
+		//calls execute command
 		execute(separators, commandList, exit_check);
 
 		//destroy the memory locations created by cstrings
