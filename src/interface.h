@@ -10,6 +10,7 @@
 #include <cstring>
 #include <string>
 #include <iostream>
+#include "test.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	string prev_command = ";";
 	string e_cmp = "exit";
 	string c_cmp = "clear";
+	string t_cmp = "test";
 	int c_pass = 0;
 	
 	//case for just exit being passed
@@ -107,6 +109,14 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						return;
 
 					}
+					//test check
+					if(strcmp(buffer[0],t_cmp.c_str()) == 0)
+					{
+						//call test here
+						//ERROR FIX THIS CONVERSION
+						test_execution(buffer, prev_check);
+						return;
+					}
 					//run execvp
 					pid_t childPID = fork();
 					pid_t PAR;
@@ -158,6 +168,14 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 
 					}
 
+					//test check
+					if(strcmp(buffer[0],t_cmp.c_str()) == 0)
+					{
+						//call test here
+						//ERROR FIX THIS CONVERSION
+						test_execution(buffer, prev_check);
+						return;
+					}
 					//run execvp
 					pid_t childPID = fork();
 					pid_t PAR;
@@ -217,6 +235,15 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						e_check = true;
 						return;
 
+					}
+
+					//test check
+					if(strcmp(buffer[0],t_cmp.c_str()) == 0)
+					{
+						//call test here
+						//ERROR FIX THIS CONVERSION
+						test_execution(buffer, prev_check);
+						return;
 					}
 					//run execvp
 					pid_t childPID = fork();
@@ -285,6 +312,15 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						if(strcmp(buffer[0], e_cmp.c_str()) == 0)
 						{
 							e_check = true;
+							return;
+						}
+
+						//test check
+						if(strcmp(buffer[0],t_cmp.c_str()) == 0)
+						{
+							//call test here
+							//ERROR FIX THIS CONVERSION
+							test_execution(buffer, prev_check);
 							return;
 						}
 						//run execvp
