@@ -30,22 +30,50 @@ void test_execution(char * command[1024], bool & e_check)
 
 	//implementation of test command
 	
-	//checks if the file/directory exists
-	if(command[1] == "-e")
-	{
-		flag = "-e";
-
-	}
 	//checks if the file/directory exists and is a file
-	else if(command[1] == "-f")
+	if(command[1] == "-f")
 	{
-		flag = "-f";
-
+		if(stat(command , & buf) == -1)
+		{
+			perror("Stat failure");
+			return;
+		}
+		switch (buf.st_mode & S_IFMT)
+		{
+			case S_IFREG: cout << t_rue;
+			default: cout << f_alse;
+		}
 	}
 	//checks if the file/directory exists and is a directory
+	else if(command[1] == "-d")
+	{
+		if(stat(command , & buf) == -1)
+		{
+			perror("Stat failure");
+			return;
+		}
+		switch (buf.st_mode & S_IFMT)
+		{
+			case S_IFDIR: cout << t_rue;
+			default: cout << f_alse;
+		}
+
+	}
+	//checks if the file/directory exists 
 	else
 	{
-		flag = "-d";
+		if(stat(command , & buf) == -1)
+		{
+			perror("Stat failure");
+			return;
+		}
+		switch (buf.st_mode & S_IFMT)
+		{
+			case S_IfDIR: cout << t_rue;
+			case S_IFREG: cout << t_rue;
+			default: cout << f_alse;
+		}
 	}
+	return;
 }
 #endif
