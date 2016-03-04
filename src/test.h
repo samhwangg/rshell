@@ -7,11 +7,15 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
-
+#include <string>
 
 //function that executes test command
 void test_execution(char *command[1024], bool & e_check)
 {
+	//fix just test passed in case!!!!!!!!!!!!!!!
+	//
+	//
+	//
 	struct stat buf;
 	string flag;
 	string t_rue = "(True)\n";
@@ -24,7 +28,19 @@ void test_execution(char *command[1024], bool & e_check)
 	{
 		if(command[2] == '\0')
 		{
-			flag = "-e";				
+			flag = "-e";
+			//check if a /is present in path input
+			//removal of the /
+			string path = command[1];
+			if(path.at(0) == 47)
+			{
+				//loop to remove first element in string
+				string new_path;
+				for(unsigned i = 1; i < path.size();++i){
+					new_path.push_back(path.at(i));
+				}
+				command[1] = (char *)new_path.c_str();
+			}
 		}
 		else
 		{
@@ -35,10 +51,20 @@ void test_execution(char *command[1024], bool & e_check)
 	}
 	
 	//implementation of test command
-	
 	//checks if the file/directory exists and is a file
 	if(flag == "-f")
 	{
+		// first char slash check
+		string path = command[2];
+		if(path.at(0) == 47)
+		{
+			//loop to remove first element in string
+			string new_path;
+			for(unsigned i = 1; i < path.size();++i){
+				new_path.push_back(path.at(i));
+			}
+			command[2] = (char *)new_path.c_str();
+		}
 		if(stat(command[2] , & buf) == -1)
 		{
 			perror("Stat failure");
@@ -55,6 +81,16 @@ void test_execution(char *command[1024], bool & e_check)
 	//checks if the file/directory exists and is a directory
 	else if(flag == "-d")
 	{
+		string path = command[2];
+		if(path.at(0) == 47)
+		{
+			//loop to remove first element in string
+			string new_path;
+			for(unsigned i = 1; i < path.size();++i){
+				new_path.push_back(path.at(i));
+			}
+			command[2] = (char *)new_path.c_str();
+		}
 		if(stat(command[2] , & buf) == -1)
 		{
 			perror("Stat failure");
@@ -71,6 +107,20 @@ void test_execution(char *command[1024], bool & e_check)
 	//checks if the file/directory exists 
 	else
 	{
+		//if 3 arguements
+		if(command[2] != '\0' )
+		{
+			string path = command[2];
+			if(path.at(0) == 47)
+			{
+				//loop to remove first element in string
+				string new_path;
+				for(unsigned i = 1; i < path.size();++i){
+					new_path.push_back(path.at(i));
+				}
+				command[2] = (char *)new_path.c_str();
+			}
+		}
 		//if default flag was set!!
 		if(command[2] == '\0')
 		{
