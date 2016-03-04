@@ -69,7 +69,7 @@ void test_execution(char *command[1024], bool & e_check)
 		}
 		if(stat(command[2] , & buf) == -1)
 		{
-			perror("Stat failure");
+			cout << f_alse;
 			e_check = false;
 			return;
 		}
@@ -95,7 +95,7 @@ void test_execution(char *command[1024], bool & e_check)
 		}
 		if(stat(command[2] , & buf) == -1)
 		{
-			perror("Stat failure");
+			cout << f_alse;
 			e_check = false;
 			return;
 		}
@@ -128,7 +128,7 @@ void test_execution(char *command[1024], bool & e_check)
 		{
 			if(stat(command[1] , & buf) == -1)
 			{
-				perror("Stat failure");
+				cout << f_alse;
 				e_check = false;
 				return;
 			}
@@ -142,7 +142,7 @@ void test_execution(char *command[1024], bool & e_check)
 		}
 		if(stat(command[2] , & buf) == -1)
 		{
-			perror("Stat failure");
+			cout << f_alse;
 			e_check = false;
 			return;
 		}
