@@ -58,7 +58,7 @@ int main(int argc, char * argv[])
 		}
 
 		//search for separators and stores it into string vector
-		for(unsigned i = 0; i < 1024; i++)
+		for(unsigned i = 0; str[i] != '\0'; i++)
 		{
 			if(str[i] == ';')
 				separators.push_back(";");
@@ -170,14 +170,14 @@ int main(int argc, char * argv[])
 		}
 
 		//c string output test
-		for(unsigned i = 0; i < commandList.size(); i++)
-		{
-			for(unsigned j = 0; j < commandList.at(i).size(); j++)
-			{
-				cout << commandList.at(i).at(j) << " ";
-			}
-			cout << endl;
-		}
+		//for(unsigned i = 0; i < commandList.size(); i++)
+		//{
+		//	for(unsigned j = 0; j < commandList.at(i).size(); j++)
+		//	{
+		//		cout << commandList.at(i).at(j) << " ";
+		//	}
+		//	cout << endl;
+		//}
 
 		//calls execute command
 		execute(separators, commandList, exit_check);
