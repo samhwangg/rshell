@@ -12,10 +12,12 @@
 //function that executes test command
 void test_execution(char *command[1024], bool & e_check)
 {
-	//fix just test passed in case!!!!!!!!!!!!!!!
-	//
-	//
-	//
+	//case for just test passed
+	if(command[1] == '\0')
+	{
+		e_check = false;
+		return;
+	}
 	struct stat buf;
 	string flag;
 	string t_rue = "(True)\n";
@@ -73,8 +75,8 @@ void test_execution(char *command[1024], bool & e_check)
 		}
 		switch (buf.st_mode & S_IFMT)
 		{
-			case S_IFREG: cout << t_rue; break;
-			default: cout << f_alse; break;
+			case S_IFREG: cout << t_rue; e_check = true; break;
+			default: cout << f_alse; e_check = false;  break;
 		}
 		
 	}
@@ -99,8 +101,8 @@ void test_execution(char *command[1024], bool & e_check)
 		}
 		switch (buf.st_mode & S_IFMT)
 		{
-			case S_IFDIR: cout << t_rue; break;
-			default: cout << f_alse; break;
+			case S_IFDIR: cout << t_rue; e_check = true; break;
+			default: cout << f_alse; e_check = false;  break;
 		}
 		
 	}
@@ -132,11 +134,10 @@ void test_execution(char *command[1024], bool & e_check)
 			}
 			switch (buf.st_mode & S_IFMT)
 			{
-				case S_IFDIR: cout << t_rue; break;
-				case S_IFREG: cout << t_rue; break;
-				default: cout << f_alse; break;
+				case S_IFDIR: cout << t_rue; e_check = true; break;
+				case S_IFREG: cout << t_rue; e_check = true; break;
+				default: cout << f_alse; e_check = false; break;
 			}
-			e_check = true;
 			return;
 		}
 		if(stat(command[2] , & buf) == -1)
@@ -152,7 +153,6 @@ void test_execution(char *command[1024], bool & e_check)
 			default: cout << f_alse; break;
 		}
 	}
-	e_check = true;
 	return;
 }
 #endif
