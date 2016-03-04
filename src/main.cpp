@@ -114,11 +114,12 @@ int main(int argc, char * argv[])
 					}
 					for(unsigned y = 0; y < 4; y++)
 					{
-						for(unsigned z = cmdsize + 1; z > 0 ; z--)
+						for(unsigned z = cmdsize + 2; z > 0 ; z--)
 						{	
 							commands.at(i)[z] = commands.at(i)[z - 1];
 						}
 					}
+					commands.at(i)[cmdsize + 3] = '\0';
 					commands.at(i)[0] = 't';
 					commands.at(i)[1] = 'e';
 					commands.at(i)[2] = 's';
