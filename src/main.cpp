@@ -31,6 +31,9 @@ int main(int argc, char * argv[])
 		vector<char* > commands;
 		//vector of strings to store separators
 		vector<string> separators;
+		//added to test
+		separators.clear();
+		//added to test something
 
 		//user input up to a max of 1024 characters
 		cin.getline(str2,1024);
@@ -147,6 +150,9 @@ int main(int argc, char * argv[])
 
 		//creates a 2D vector to store the commands and the flag in a vector of cstrings
 		vector<vector<char* > > commandList;
+		//added to test something
+		commandList.clear();
+		//added to test something
 		vector<char* >separateCommands;
 		char* sample;
 		for(unsigned i = 0; i < commands.size(); i++)
