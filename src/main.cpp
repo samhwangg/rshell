@@ -33,8 +33,8 @@ int main(int argc, char * argv[])
 		vector<string> separators;
 		//added to test
 		separators.clear();
-		//added to test something
-
+		//stores vector of parenthesis index
+		vector<int> paren;
 		//user input up to a max of 1024 characters
 		cin.getline(str2,1024);
 		
@@ -58,19 +58,42 @@ int main(int argc, char * argv[])
 		}
 
 		//search for separators and stores it into string vector
+		//also stores position of parenthesis in relation to separators
+		int separatorCount = 0;
+		int parenCount = 0;
 		for(unsigned i = 0; str[i] != '\0'; i++)
 		{
 			if(str[i] == ';')
+			{
 				separators.push_back(";");
-	
-			if(str[i] == '&') {
+				separatorCount++;
+			}
+			
+			if(str[i] == '&')
+			{
 				separators.push_back("&&");
 				i++;
+				separatorCount++;
 			}
 	
-			if(str[i] == '|') {
+			if(str[i] == '|')
+			{
 				separators.push_back("||");
 				i++;
+				separatorCount++;
+			}
+
+			if(str[i] == '(')
+			{
+				paren.push_back(separatorCount + 1);
+				paren.push_back(separatorCount +1);
+				parenCount++;
+			}
+
+			if(str[i] == ')')
+			{
+				paren.at((parenCount * 2) - 1) = separatorCount;
+				parenCount--;
 			}
 		}
 
@@ -168,7 +191,15 @@ int main(int argc, char * argv[])
 			
 			separateCommands.clear();
 		}
-//		cout << commandList.size() << endl;
+		
+		//parenthesis output test
+		for(unsigned i = 0; i < paren.size(); i++)
+		{
+			cout << paren.at(i) << endl;
+		}
+
+
+
 		//c string output test
 //		for(unsigned i = 0; i < commandList.size(); i++)
 //		{
@@ -182,7 +213,7 @@ int main(int argc, char * argv[])
 		//calls execute command
 		//if(commandList.size() == 0)
 		//{
-			execute(separators, commandList, exit_check);
+		//	execute(separators, commandList, exit_check);
 		//}
 
 		//destroy the memory locations created by cstrings
