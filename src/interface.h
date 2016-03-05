@@ -13,7 +13,8 @@
 #include "test.h"
 
 using namespace std;
-
+//add overall object bool by reference
+//add vector of paran pairs
 void execute(vector<string> connectors, vector<vector<char *> > commands, bool & e_check)
 {	
 	//used to see if previous command was ran properly
@@ -24,7 +25,20 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	string c_cmp = "clear";
 	string t_cmp = "test";
 	int c_pass = 0;
-	
+
+	//if stament is needed if paran where detected!
+	//if parran detected create NEW commands vector ( xxx(xx)xxx )
+	//remove pair of paren and add new if any
+	//insert recursion call here
+	//
+	//
+	//add vector of paren pairs to execute function
+	//execute(connectors, HERE ADD NEW COMMANDS, e_check, bool overall_logic, vector parn pairs)
+	//
+	//
+	//inser recursion call here
+
+
 	//case for just exit being passed
 	if(connectors.size() == 0)
 	{
