@@ -33,7 +33,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 			if(strcmp(commands.at(0).at(0), e_cmp.c_str()) == 0)
 			{
 				e_check = true;
-				return;
+				exit(0);
 			}
 			else if(strcmp(commands.at(0).at(0), c_cmp.c_str()) == 0)
 			{	
@@ -106,7 +106,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					if(strcmp(buffer[0], e_cmp.c_str()) == 0)
 					{
 						e_check = true;
-						return;
+						exit(0);
 
 					}
 					//test check
@@ -167,7 +167,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					if(strcmp(buffer[0], e_cmp.c_str()) == 0)
 					{
 						e_check = true;
-						return;
+						exit(0);
 
 					}
 
@@ -239,7 +239,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					if(strcmp(buffer[0], e_cmp.c_str()) == 0)
 					{
 						e_check = true;
-						return;
+						exit(0);
 
 					}
 
@@ -319,7 +319,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						if(strcmp(buffer[0], e_cmp.c_str()) == 0)
 						{
 							e_check = true;
-							return;
+							exit(0);
 						}
 
 						//test check

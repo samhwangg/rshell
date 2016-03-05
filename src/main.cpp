@@ -182,7 +182,7 @@ int main(int argc, char * argv[])
 		//calls execute command
 		//if(commandList.size() == 0)
 		//{
-		//	execute(separators, commandList, exit_check);
+			execute(separators, commandList, exit_check);
 		//}
 
 		//destroy the memory locations created by cstrings
