@@ -159,7 +159,7 @@ int main(int argc, char * argv[])
 		{
 			sample = strtok(commands.at(i), " \t\n");
 			while(sample != NULL)
-			{	
+			{
 				separateCommands.push_back(sample);
 				sample = strtok(NULL, " \t\n");
 			}
@@ -168,19 +168,22 @@ int main(int argc, char * argv[])
 			
 			separateCommands.clear();
 		}
-
+//		cout << commandList.size() << endl;
 		//c string output test
-		for(unsigned i = 0; i < commandList.size(); i++)
-		{
-			for(unsigned j = 0; j < commandList.at(i).size(); j++)
-			{
-				cout << commandList.at(i).at(j) << " ";
-			}
-			cout << endl;
-		}
+//		for(unsigned i = 0; i < commandList.size(); i++)
+//		{
+//			for(unsigned j = 0; j < commandList.at(i).size(); j++)
+//			{
+//				cout << commandList.at(i).at(j) << " ";
+//			}
+//			cout << endl;
+//		}
 
 		//calls execute command
-		//execute(separators, commandList, exit_check);
+		//if(commandList.size() == 0)
+		//{
+		//	execute(separators, commandList, exit_check);
+		//}
 
 		//destroy the memory locations created by cstrings
 		//clears all vectors
