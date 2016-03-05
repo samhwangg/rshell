@@ -157,11 +157,11 @@ int main(int argc, char * argv[])
 		char* sample;
 		for(unsigned i = 0; i < commands.size(); i++)
 		{
-			sample = strtok(commands.at(i), " ");
+			sample = strtok(commands.at(i), " \t\n");
 			while(sample != NULL)
 			{	
 				separateCommands.push_back(sample);
-				sample = strtok(NULL, " ");
+				sample = strtok(NULL, " \t\n");
 			}
 			//pushes back vector of cstrings into vector, making a 2D vector
 			commandList.push_back(separateCommands);
@@ -170,17 +170,17 @@ int main(int argc, char * argv[])
 		}
 
 		//c string output test
-		//for(unsigned i = 0; i < commandList.size(); i++)
-		//{
-		//	for(unsigned j = 0; j < commandList.at(i).size(); j++)
-		//	{
-		//		cout << commandList.at(i).at(j) << " ";
-		//	}
-		//	cout << endl;
-		//}
+		for(unsigned i = 0; i < commandList.size(); i++)
+		{
+			for(unsigned j = 0; j < commandList.at(i).size(); j++)
+			{
+				cout << commandList.at(i).at(j) << " ";
+			}
+			cout << endl;
+		}
 
 		//calls execute command
-		execute(separators, commandList, exit_check);
+		//execute(separators, commandList, exit_check);
 
 		//destroy the memory locations created by cstrings
 		//clears all vectors
