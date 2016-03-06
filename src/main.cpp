@@ -170,6 +170,28 @@ int main(int argc, char * argv[])
 			}
 		}
 
+		//removes parenthesis from commands
+		for(unsigned i = 0; i < commands.size(); i++)
+		{
+			for(unsigned j = 0; commands.at(i)[j] != '\0'; j++)
+			{
+				if(commands.at(i)[j] == '(')
+				{
+					for(unsigned k = j; commands.at(i)[k] != '\0'; k++)
+					{
+						commands.at(i)[k] = commands.at(i)[k + 1];
+					}
+				}
+				if(commands.at(i)[j] == ')')
+				{
+					for(unsigned k = j; commands.at(i)[k] != '\0'; k++)
+					{
+						commands.at(i)[k] = commands.at(i)[k + 1];
+					}
+				}
+			}
+		}
+
 
 		//creates a 2D vector to store the commands and the flag in a vector of cstrings
 		vector<vector<char* > > commandList;
