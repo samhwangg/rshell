@@ -15,7 +15,7 @@
 using namespace std;
 //add overall object bool by reference
 //add vector of paran pairs
-void execute(vector<string> connectors, vector<vector<char *> > commands, bool & e_check, vector<int> & paren)
+void execute(vector<string> connectors, vector<vector<char *> > commands, bool & e_check, vector<int> & paren, int fi_check)
 {	
 	//used to see if previous command was ran properly
 	//both values are default
@@ -25,41 +25,6 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	string c_cmp = "clear";
 	string t_cmp = "test";
 	int c_pass = 0;
-
-	if(paren.size() != 0)
-	{
-		cout << paren.size() << endl;
-		//working with beg and end paren
-		int beg = paren.at(0);
-		int end = paren.at(1);
-		int p_size = paren.size();
-		if(p_size == 2)
-		{
-			paren.pop_back(); paren.pop_back();
-		}
-		else
-		{
-			for( int i = 0; i + 2 <  p_size ; i++ ){
-				paren.at(i) = paren.at(i + 2);
-			}
-			paren.pop_back(); paren.pop_back();
-		}
-		
-		vector<string> conn2;
-		//creates new connectors vectos
-		for(int i = beg - 1 ; i < end ; ++i){
-			cout << i << endl;
-			conn2.push_back(connectors.at(i));
-		}
-		
-		//create new commands vector
-		vector<vector<char *> > recom;
-		for(int i = beg - 1; i <= end ; ++i){
-			recom.push_back(commands.at(i));
-		}
-		execute( conn2 , recom, e_check,  paren);
-
-	}
 
 	//case for just exit being passed
 	if(connectors.size() == 0)
@@ -153,7 +118,42 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						test_execution(buffer, prev_check);
 					}
 					else
-					{
+					{	
+						if(fi_check != 0){
+							if(paren.size() != 0)
+							{
+								//working with beg and end paren
+								int beg = paren.at(0);
+								int end = paren.at(1);
+								int p_size = paren.size();
+								if(p_size == 2)
+								{
+									paren.pop_back(); paren.pop_back();
+								}
+								else
+								{
+									for( int i = 0; i + 2 <  p_size ; i++ ){
+										paren.at(i) = paren.at(i + 2);
+									}
+									paren.pop_back(); paren.pop_back();
+								}
+			
+								vector<string> conn2;
+								//creates new connectors vectos
+								for(int i = beg - 1 ; i < end ; ++i){
+									conn2.push_back(connectors.at(i));
+								}
+											
+								//create new commands vector
+								vector<vector<char *> > recom;
+								for(int i = beg - 1; i <= end ; ++i){
+									recom.push_back(commands.at(i));
+								}
+								int go_check = 0;
+								execute( conn2 , recom, e_check,  paren, go_check);
+
+							}
+						}
 						//run execvp
 						pid_t childPID = fork();
 						pid_t PAR;
@@ -217,6 +217,43 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					}
 					else
 					{
+						if(fi_check != 0){
+							if(paren.size() != 0)
+							{
+								//working with beg and end paren
+								int beg = paren.at(0);
+								int end = paren.at(1);
+								int p_size = paren.size();
+								if(p_size == 2)
+								{
+									paren.pop_back(); paren.pop_back();
+								}
+								else
+								{
+									for( int i = 0; i + 2 <  p_size ; i++ ){
+										paren.at(i) = paren.at(i + 2);
+									}
+									paren.pop_back(); paren.pop_back();
+								}
+			
+								vector<string> conn2;
+								//creates new connectors vectos
+								for(int i = beg - 1 ; i < end ; ++i){
+									conn2.push_back(connectors.at(i));
+								}
+											
+								//create new commands vector
+								vector<vector<char *> > recom;
+								for(int i = beg - 1; i <= end ; ++i){
+									recom.push_back(commands.at(i));
+								}
+								int go_check = 0;
+								execute( conn2 , recom, e_check,  paren, go_check);
+
+							}
+						}
+						//run execvp
+
 						//run execvp
 						pid_t childPID = fork();
 						pid_t PAR;
@@ -289,6 +326,43 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					}
 					else
 					{
+						
+
+						if(fi_check != 0){
+							if(paren.size() != 0)
+							{
+								//working with beg and end paren
+								int beg = paren.at(0);
+								int end = paren.at(1);
+								int p_size = paren.size();
+								if(p_size == 2)
+								{
+									paren.pop_back(); paren.pop_back();
+								}
+								else
+								{
+									for( int i = 0; i + 2 <  p_size ; i++ ){
+										paren.at(i) = paren.at(i + 2);
+									}
+									paren.pop_back(); paren.pop_back();
+								}
+			
+								vector<string> conn2;
+								//creates new connectors vectos
+								for(int i = beg - 1 ; i < end ; ++i){
+									conn2.push_back(connectors.at(i));
+								}
+											
+								//create new commands vector
+								vector<vector<char *> > recom;
+								for(int i = beg - 1; i <= end ; ++i){
+									recom.push_back(commands.at(i));
+								}
+								int go_check = 0;
+								execute( conn2 , recom, e_check,  paren, go_check);
+
+							}
+						}
 						//run execvp
 						pid_t childPID = fork();
 						pid_t PAR;
@@ -368,6 +442,43 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						}
 						else
 						{
+							
+
+							if(fi_check != 0){
+								if(paren.size() != 0)
+								{
+									//working with beg and end paren
+									int beg = paren.at(0);
+									int end = paren.at(1);
+									int p_size = paren.size();
+									if(p_size == 2)
+									{
+										paren.pop_back(); paren.pop_back();
+									}
+									else
+									{
+										for( int i = 0; i + 2 <  p_size ; i++ ){
+											paren.at(i) = paren.at(i + 2);
+										}
+										paren.pop_back(); paren.pop_back();
+									}
+				
+									vector<string> conn2;
+									//creates new connectors vectos
+									for(int i = beg - 1 ; i < end ; ++i){
+										conn2.push_back(connectors.at(i));
+									}
+											
+									//create new commands vector
+									vector<vector<char *> > recom;
+									for(int i = beg - 1; i <= end ; ++i){
+										recom.push_back(commands.at(i));
+									}
+									int go_check = 0;
+									execute( conn2 , recom, e_check,  paren, go_check);
+	
+								}
+							}
 							//run execvp
 							pid_t childPID = fork();
 							pid_t PAR;
