@@ -15,7 +15,7 @@
 using namespace std;
 //add overall object bool by reference
 //add vector of paran pairs
-void execute(vector<string> connectors, vector<vector<char *> > commands, bool & e_check)
+void execute(vector<string> connectors, vector<vector<char *> > commands, bool & e_check, vector<int> & paren)
 {	
 	//used to see if previous command was ran properly
 	//both values are default
@@ -26,18 +26,40 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	string t_cmp = "test";
 	int c_pass = 0;
 
-	//if stament is needed if paran where detected!
-	//if parran detected create NEW commands vector ( xxx(xx)xxx )
-	//remove pair of paren and add new if any
-	//insert recursion call here
-	//
-	//
-	//add vector of paren pairs to execute function
-	//execute(connectors, HERE ADD NEW COMMANDS, e_check, bool overall_logic, vector parn pairs)
-	//
-	//
-	//inser recursion call here
+	if(paren.size() != 0)
+	{
+		cout << paren.size() << endl;
+		//working with beg and end paren
+		int beg = paren.at(0);
+		int end = paren.at(1);
+		int p_size = paren.size();
+		if(p_size == 2)
+		{
+			paren.pop_back(); paren.pop_back();
+		}
+		else
+		{
+			for( int i = 0; i + 2 <  p_size ; i++ ){
+				paren.at(i) = paren.at(i + 2);
+			}
+			paren.pop_back(); paren.pop_back();
+		}
+		
+		vector<string> conn2;
+		//creates new connectors vectos
+		for(int i = beg - 1 ; i < end ; ++i){
+			cout << i << endl;
+			conn2.push_back(connectors.at(i));
+		}
+		
+		//create new commands vector
+		vector<vector<char *> > recom;
+		for(int i = beg - 1; i <= end ; ++i){
+			recom.push_back(commands.at(i));
+		}
+		execute( conn2 , recom, e_check,  paren);
 
+	}
 
 	//case for just exit being passed
 	if(connectors.size() == 0)
