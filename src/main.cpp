@@ -214,14 +214,6 @@ int main(int argc, char * argv[])
 			separateCommands.clear();
 		}
 		
-		//parenthesis output test
-		for(unsigned i = 0; i < paren.size(); i++)
-		{
-			cout << paren.at(i) << endl;
-		}
-
-
-
 		//c string output test
 	//	for(unsigned i = 0; i < commandList.size(); i++)
 	//	{
@@ -231,14 +223,25 @@ int main(int argc, char * argv[])
 	//		}
 	//		cout << endl;
 	//	}
-		
+	
+
+		//paren out
+		//for(unsigned int i = 0; i < paren.size(); ++i){
+		//	cout << paren.at(i) << endl;
+
+		//}
 		//to run first command always
 		int first_run = 0;
+
+		cout << paren.size() << endl;
 		//calls execute command
-		//if(commandList.size() == 0)
-		//{
+		if((paren.size() % 2) == 0)
+		{
 			execute(separators, commandList, exit_check, paren, first_run);
-		//}
+		}
+		else{
+			cout << "Error: Paranthesis do not match.\n";
+		}
 
 		//destroy the memory locations created by cstrings
 		//clears all vectors
