@@ -10,6 +10,7 @@
 #include <cstring>
 #include <string>
 #include <iostream>
+#include <wctype.h>
 #include "test.h"
 
 using namespace std;
@@ -31,6 +32,9 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 	{
 		if(commands.size() == 1)
 		{
+			if(commands.at(0).size() == 0){
+				return;
+			}
 			if(strcmp(commands.at(0).at(0), e_cmp.c_str()) == 0)
 			{
 				e_check = true;
@@ -109,6 +113,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					{
 						e_check = true;
 						exit(0);
+						return;
 
 					}
 					//test check
@@ -207,6 +212,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					{
 						e_check = true;
 						exit(0);
+						return;
 
 					}
 
@@ -318,6 +324,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					{
 						e_check = true;
 						exit(0);
+						return;
 
 					}
 
@@ -438,6 +445,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						{
 							e_check = true;
 							exit(0);
+							return;
 						}
 
 						//test check
