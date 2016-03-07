@@ -61,6 +61,7 @@ int main(int argc, char * argv[])
 		//also stores position of parenthesis in relation to separators
 		int separatorCount = 0;
 		int parenCount = 0;
+		int p_count = 0;
 		for(unsigned i = 0; str[i] != '\0'; i++)
 		{
 			if(str[i] == ';')
@@ -85,13 +86,15 @@ int main(int argc, char * argv[])
 
 			if(str[i] == '(')
 			{
+				p_count++;
 				paren.push_back(separatorCount + 1);
 				paren.push_back(separatorCount +1);
 				parenCount++;
 			}
 
 			if(str[i] == ')')
-			{
+			{	
+				p_count++;
 				paren.at((parenCount * 2) - 1) = separatorCount;
 				parenCount--;
 			}
@@ -233,9 +236,8 @@ int main(int argc, char * argv[])
 		//to run first command always
 		int first_run = 0;
 
-		cout << paren.size() << endl;
 		//calls execute command
-		if((paren.size() % 2) == 0)
+		if((p_count % 2) == 0)
 		{
 			execute(separators, commandList, exit_check, paren, first_run);
 		}

@@ -296,7 +296,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				else if(prev_command == "||")
 				{
 					//will not run in any case if previoud command was true
-					prev_check = false;	
+					prev_check = true;	
 				}
 
 			}
