@@ -126,17 +126,12 @@ int main(int argc, char * argv[])
 			{
 				if(commands.at(i)[j] == '[')
 				{
-					for(unsigned k = j; commands.at(i)[k] != '\0'; k++)
-					{
-						commands.at(i)[k] = commands.at(i)[k + 1];
-					}
+					commands.at(i)[j] = ' ';
 				}
 				if(commands.at(i)[j] == ']')
 				{
-					for(unsigned k = j; commands.at(i)[k] != '\0'; k++)
-					{
-						commands.at(i)[k] = commands.at(i)[k + 1];
-					}
+					commands.at(i)[j] = ' ';
+
 					for(unsigned x = 0; commands.at(i)[x] != '\0'; x++)
 					{
 						cmdsize++;
@@ -192,6 +187,22 @@ int main(int argc, char * argv[])
 						commands.at(i)[k] = commands.at(i)[k + 1];
 					}
 				}
+				if(commands.at(i)[j] == '(')
+				{
+					for(unsigned k = j; commands.at(i)[k] != '\0'; k++)
+					{
+						commands.at(i)[k] = commands.at(i)[k + 1];
+					}
+				}
+				if(commands.at(i)[j] == ')')
+				{
+					for(unsigned k = j; commands.at(i)[k] != '\0'; k++)
+					{
+						commands.at(i)[k] = commands.at(i)[k + 1];
+					}
+				}
+
+
 			}
 		}
 
@@ -234,12 +245,12 @@ int main(int argc, char * argv[])
 
 		//}
 		//to run first command always
-		int first_run = 0;
+		//int first_run = 0;
 
 		//calls execute command
 		if((p_count % 2) == 0)
 		{
-			execute(separators, commandList, exit_check, paren, first_run);
+		//	execute(separators, commandList, exit_check, paren, first_run);
 		}
 		else{
 			cout << "Error: Paranthesis do not match.\n";
