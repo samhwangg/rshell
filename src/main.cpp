@@ -239,7 +239,7 @@ int main(int argc, char * argv[])
 		//calls execute command
 		if((p_count % 2) == 0)
 		{
-		//	execute(separators, commandList, exit_check, paren, first_run);
+			execute(separators, commandList, exit_check, paren, first_run);
 		}
 		else{
 			cout << "Error: Paranthesis do not match.\n";
