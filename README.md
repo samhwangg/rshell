@@ -42,14 +42,15 @@
 6. Error comes up on first input in the command line. Works fine after that
 
 ##### Bugs (Assignment 2)
-1. blah
-2. blah etc
+1. cd: This alone other built-in bash commands will not work due to the fact that they have no executable file in the bin
+2. echo: when doing echo "[connectot]" nothing is output, echo " [anything else]" works as expected
+3. exit: Fixed from Assignment 1 BUT in very MINIMAL accounts exit was needed more than once. VERY UNLIKELY
 
 ##### How To Run rshell
 ```
 $ git clone https://github.com/samhwangg/rshell.git
 $ cd rshell
-$ git checkout hw1
+$ git checkout hw2
 $ make
 $ bin/rshell
 ```

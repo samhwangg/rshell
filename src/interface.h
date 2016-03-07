@@ -285,13 +285,16 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 							}
 						}
 						else
-						{
+						{	
 							prev_check = true;
 							//in child process
 							int run_shell = execvp(buffer[0],buffer);
 							if(run_shell < 0)
 							{
 								perror("Execvp failed");
+								if(paren.size() == 2){
+									exit(0);
+								}
 								prev_check = false;
 							}
 
@@ -303,7 +306,10 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				else if(prev_command == "||")
 				{
 					//will not run in any case if previoud command was true
-					prev_check = true;	
+					prev_check = true;
+					if(paren.size() == 2){
+						return;
+					}
 				}
 
 			}
@@ -416,6 +422,9 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 				{
 					//will not run if previoud command was false
 					prev_check = false;
+					if(paren.size() == 2){
+						exit(0);
+					}
 
 				}
 				else if(prev_command == "||")
