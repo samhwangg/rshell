@@ -14,6 +14,24 @@
 	- If a command is followed by `||`, then the next command is executed only if the first one does not succeed.
 	- Anything found after the first found `#` is considered a comment will not be passed through the terminal.
 
+##### Assignment 2
+
+1. Allows the user to utilize the 'test' command to see if a directory exists or not.
+	- The 'test' command could be tested in 2 ways: `test -flag test/file/path` OR `[ -flag test/file/path ]`.
+	- The user is allowed to use one of three flags: `-e`, `-f`, `-d`.
+	- The `-e` flag will be used by default if none are defined.
+	- If a directory exists the terminal will output `(True)`.
+	- If a directory is not found/doesn't exist, the ternimal will output `(False)`.
+2. The user may use precedence parameters `( )` These parameters are used to change the precedence of returns of commands, connectors, and chains of connectors.
+	- Ex) `echo A && echo B || echo C && echo D` will output:
+	- `A`
+	- `B`
+	- `D`
+	- However, the parenthesis may change the precedence of these commands.
+	- Ex) `(echo A && echo B) || (echo C && echo D)` will output:
+	- `A`
+	- `B`
+
 ##### Bugs(Assignment 1)
 
 1. cd: This alone other built-in bash commands will not work due to the fact that they have no executable file in the bin
@@ -23,6 +41,10 @@
 5. Massive sequences of || (5>) with all except last returning false will return the last || as false in cases
 6. Error comes up on first input in the command line. Works fine after that
 
+##### Bugs (Assignment 2)
+1. blah
+2. blah etc
+
 ##### How To Run rshell
 ```
 $ git clone https://github.com/samhwangg/rshell.git
@@ -31,4 +53,3 @@ $ git checkout hw1
 $ make
 $ bin/rshell
 ```
-test
