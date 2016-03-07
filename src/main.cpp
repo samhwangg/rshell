@@ -229,28 +229,22 @@ int main(int argc, char * argv[])
 		}
 		
 		//c string output test
-		for(unsigned i = 0; i < commandList.size(); i++)
-		{
-			for(unsigned j = 0; j < commandList.at(i).size(); j++)
-			{
-				cout << commandList.at(i).at(j) << " ";
-			}
-			cout << endl;
-		}
+	//	for(unsigned i = 0; i < commandList.size(); i++)
+	//	{
+	//		for(unsigned j = 0; j < commandList.at(i).size(); j++)
+	//		{
+	//			cout << commandList.at(i).at(j) << " ";
+	//		}
+	//		cout << endl;
+	//	}
 	
-
-		//paren out
-		//for(unsigned int i = 0; i < paren.size(); ++i){
-		//	cout << paren.at(i) << endl;
-
-		//}
 		//to run first command always
-		//int first_run = 0;
+		int first_run = 0;
 
 		//calls execute command
 		if((p_count % 2) == 0)
 		{
-		//	execute(separators, commandList, exit_check, paren, first_run);
+			execute(separators, commandList, exit_check, paren, first_run);
 		}
 		else{
 			cout << "Error: Paranthesis do not match.\n";

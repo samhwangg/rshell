@@ -1,5 +1,5 @@
 COMP=g++
-CFLAGS=-Wall -Werror -ansi -pedantic
+CFLAGS=-Wall -Werror -ansi -pedantic 
 
 all:
 	$(COMP) $(CFLAGS) src/main.cpp -o rshell
