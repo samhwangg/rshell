@@ -151,7 +151,9 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 								}
 								int go_check = 0;
 								execute( conn2 , recom, e_check,  paren, go_check);
-
+								if(e_check){
+									return;
+								}
 							}
 						}
 						//run execvp
@@ -249,7 +251,9 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 								}
 								int go_check = 0;
 								execute( conn2 , recom, e_check,  paren, go_check);
-
+								if(e_check){
+									return;
+								}
 							}
 						}
 						//run execvp
@@ -360,6 +364,9 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 								}
 								int go_check = 0;
 								execute( conn2 , recom, e_check,  paren, go_check);
+								if(e_check){
+									return;
+								}
 
 							}
 						}
@@ -476,7 +483,9 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 									}
 									int go_check = 0;
 									execute( conn2 , recom, e_check,  paren, go_check);
-	
+									if(e_check){
+										return;
+									}
 								}
 							}
 							//run execvp
