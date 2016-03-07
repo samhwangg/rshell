@@ -71,6 +71,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 			return;
 		}
 	}
+
 	//runs normaly if no syntax error detected
 	if(valid_case1)
 	{	
@@ -152,7 +153,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 								int go_check = 0;
 								execute( conn2 , recom, e_check,  paren, go_check);
 								if(e_check){
-									return;
+									exit(0);
 								}
 							}
 						}
@@ -252,7 +253,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 								int go_check = 0;
 								execute( conn2 , recom, e_check,  paren, go_check);
 								if(e_check){
-									return;
+									exit(0);
 								}
 							}
 						}
@@ -365,7 +366,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 								int go_check = 0;
 								execute( conn2 , recom, e_check,  paren, go_check);
 								if(e_check){
-									return;
+									exit(0);
 								}
 
 							}
@@ -484,7 +485,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 									int go_check = 0;
 									execute( conn2 , recom, e_check,  paren, go_check);
 									if(e_check){
-										return;
+										exit(0);
 									}
 								}
 							}
