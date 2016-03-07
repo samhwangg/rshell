@@ -75,7 +75,8 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 			return;
 		}
 	}
-
+	
+	int e_loop = 0;
 	//runs normaly if no syntax error detected
 	if(valid_case1)
 	{	
@@ -83,6 +84,9 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 		//and accounts for the connectors
 		for(unsigned it  = 0; it < connectors.size() + 1; ++it)
 		{
+			if(e_loop > 0){
+				return;
+			}
 			//makes char ** that is used in execvp and 
 			//fills with NULL loads one command at a time
 			char * buffer[1024];
@@ -124,8 +128,8 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						test_execution(buffer, prev_check);
 					}
 					else
-					{	
-						if(fi_check != 0){
+					{
+						if(fi_check > 0){
 							if(paren.size() != 0)
 							{
 								//working with beg and end paren
@@ -190,6 +194,19 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 							{
 								perror("Execvp failed");
 								prev_check = false;
+								
+								if(connectors.at(0) == "&&"){
+									if(paren.size() != 0){
+										if(paren.at(0) !=  1){
+											if(prev_check == false){
+												commands.clear();
+												connectors.clear();
+												e_loop++;
+												return;
+											}
+										}
+									}
+								}
 							}
 
 						}
@@ -226,7 +243,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					}
 					else
 					{
-						if(fi_check != 0){
+						if(fi_check >  0){
 							if(paren.size() != 0)
 							{
 								//working with beg and end paren
@@ -296,6 +313,18 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 									exit(0);
 								}
 								prev_check = false;
+								if(connectors.at(0) == "&&"){
+									if(paren.size() != 0){
+										if(paren.at(0) >  1){
+											if(prev_check == true){
+												commands.clear();
+												connectors.clear();
+												e_loop++;
+												return;
+											}
+										}
+									}
+								}
 							}
 
 						}
@@ -346,7 +375,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					{
 						
 
-						if(fi_check != 0){
+						if(fi_check > 0){
 							if(paren.size() != 0)
 							{
 								//working with beg and end paren
@@ -424,6 +453,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 					prev_check = false;
 					if(paren.size() == 2){
 						exit(0);
+						return;
 					}
 
 				}
@@ -469,7 +499,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 						{
 							
 
-							if(fi_check != 0){
+							if(fi_check > 0){
 								if(paren.size() != 0)
 								{
 									//working with beg and end paren

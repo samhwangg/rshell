@@ -44,7 +44,9 @@
 ##### Bugs (Assignment 2)
 1. cd: This alone other built-in bash commands will not work due to the fact that they have no executable file in the bin
 2. echo: when doing echo "[connectot]" nothing is output, echo " [anything else]" works as expected
-3. exit: Fixed from Assignment 1 BUT in very MINIMAL accounts exit was needed more than once. VERY UNLIKELY
+3. Seg fault may occur if # is put in multiple ().
+4. &&: Sometimes when and || is based in the sequence false || true && , and && after this do not get run.
+5. Multi exit VERY unlikely
 
 ##### How To Run rshell
 ```

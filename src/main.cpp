@@ -229,13 +229,13 @@ int main(int argc, char * argv[])
 		}
 		
 		//c string output test
-	//	for(unsigned i = 0; i < commandList.size(); i++)
-	//	{
-	//		for(unsigned j = 0; j < commandList.at(i).size(); j++)
-	//		{
-	//			cout << commandList.at(i).at(j) << " ";
-	//		}
-	//		cout << endl;
+		//for(unsigned i = 0; i < commandList.size(); i++)
+		//{
+		//	for(unsigned j = 0; j < commandList.at(i).size(); j++)
+		//	{
+		//		cout << commandList.at(i).at(j) << " ";
+		//	}
+		//	cout << endl;
 	//	}
 	
 		//to run first command always
@@ -262,6 +262,7 @@ int main(int argc, char * argv[])
 		separators.clear();
 		commandList.clear();
 		separateCommands.clear();
+		paren.clear();
 		
 	}while(!exit_check);
 	
