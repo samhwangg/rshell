@@ -47,6 +47,10 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 			}
 		}
 	}
+	if(e_check == true){
+		e_check = false;
+		exit(0);
+	}
 
 	//case when only connectors are passed
 	//and when connector end line
@@ -75,8 +79,7 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 			return;
 		}
 	}
-	
-	int e_loop = 0;
+	int e_loop = 0;	
 	//runs normaly if no syntax error detected
 	if(valid_case1)
 	{	
@@ -195,16 +198,21 @@ void execute(vector<string> connectors, vector<vector<char *> > commands, bool &
 								perror("Execvp failed");
 								prev_check = false;
 								
-								if(connectors.at(0) == "&&"){
-									if(paren.size() != 0){
-										if(paren.at(0) !=  1){
-											if(prev_check == false){
-												commands.clear();
-												connectors.clear();
-												e_loop++;
-												return;
+								if(connectors.size() == 0){
+								}
+								else{	
+									if(connectors.at(0) == "&&"){
+										if(paren.size() != 0){
+											if(paren.at(0) !=  1){
+												if(prev_check == false){
+													commands.clear();
+													connectors.clear();
+													e_loop++;
+													return;
+												}
 											}
-										}
+										}	
+								
 									}
 								}
 							}
